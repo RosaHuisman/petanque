@@ -3,7 +3,7 @@ import './style.scss';
 
 import { Route, Switch } from 'react-router-dom';
 
-import Header from '../../components/Header'
+import Home from '../../components/Home'
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       
         	<Switch>
         		<Route path="/" exact >
-              <Header />
+              <Home />
         		</Route>
         	</Switch>
     </div>
