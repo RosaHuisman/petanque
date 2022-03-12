@@ -1,11 +1,8 @@
-// == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// == Import : local
 import './style.scss';
 
-// == Composant
 const Field = ({
   value,
   type,
@@ -22,10 +19,8 @@ const Field = ({
   return (
     <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
       <input
-        // React - state
         value={value}
         onChange={handleChange}
-        // infos de base
         id={inputId}
         type={type}
         className="field-input"

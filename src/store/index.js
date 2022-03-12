@@ -15,11 +15,12 @@ const enhancers = composeEnhancers(applyMiddleware(middleware)
 const persistConfig = {
     key: 'root',
     storage: storage,
-  };
-  const pReducer = persistReducer(persistConfig, reducer);
+};
+
+const pReducer = persistReducer(persistConfig, reducer);
     
-  let store = createStore(pReducer, enhancers);
+let store = createStore(pReducer, enhancers);
   
-  let persistor = persistStore(store);
+let persistor = persistStore(store);
     
-  export default { store, persistor };
+export default { store, persistor };
