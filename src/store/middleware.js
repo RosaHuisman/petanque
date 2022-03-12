@@ -1,4 +1,4 @@
-import { LOGIN, saveUser, CHECK_TOKEN } from './actions';
+import { LOGIN, saveUser, CHECK_TOKEN } from './actions/authentification';
 import api from './utils/api';
 
 const auth = (store) => (next) => (action) => {
@@ -9,8 +9,8 @@ const auth = (store) => (next) => (action) => {
         method: 'POST',
         url: '/login',
         data: {
-          email: state.email,
-          password: state.password,
+          email: state.auth.email,
+          password: state.auth.password,
         },
       })
         .then((response) => {

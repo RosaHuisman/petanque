@@ -44,6 +44,7 @@ const LoginForm = ({
             onChange={changeField}
             value={email}
           />
+          
           <Field
             name="password"
             type="password"
@@ -66,7 +67,7 @@ const LoginForm = ({
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
+  //changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,

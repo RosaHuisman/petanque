@@ -3,7 +3,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import reducer from './reducer';
+import rootReducer from './reducers';
 import middleware from './middleware';
 
 
@@ -17,7 +17,7 @@ const persistConfig = {
     storage: storage,
 };
 
-const pReducer = persistReducer(persistConfig, reducer);
+const pReducer = persistReducer(persistConfig, rootReducer);
     
 let store = createStore(pReducer, enhancers);
   

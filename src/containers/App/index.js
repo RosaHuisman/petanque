@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import App from '../../components/App';
-import { checkToken } from '../../store/actions';
+import { checkToken } from '../../store/actions/authentification';
 
 const mapStateToProps = (state) => ({
-    isLogged: state.logged,
+    isLogged: state.auth.logged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

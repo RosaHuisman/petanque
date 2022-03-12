@@ -7,7 +7,6 @@ import LoginForm from '../../containers/LoginForm';
 const Home = (
   isLogged,
   ) => {
-    console.log(isLogged);
   return (
     <div className="home">
       <LoginForm />
