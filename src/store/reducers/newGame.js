@@ -6,10 +6,10 @@ import {
     DELETE_PLAYER,
     EDIT_FORM,
     EDIT_PLAYER,
+    CLEAR_STATE,
   } from '../actions/newGame';
   
   export const initialState = {
-    date: '',
     player: '',
     editPlayer:'',
     playerId: null,
@@ -24,7 +24,6 @@ import {
       case SET_GAME_DATE: {
         return {
           ...state,
-          date: action.date, 
         }
       }
       
@@ -83,10 +82,17 @@ import {
           players: state.players.map(player => player.id == action.playerId ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score)} : player),
           editPlayer: '',
           showEditPlayerForm: !state.showEditPlayerForm,
-  
         }
-        
       }
+
+      case CLEAR_STATE: {
+        return {
+          ...state,
+          players: [],
+          player: '',
+        }
+      }        
+      
       
       default:
         return state;

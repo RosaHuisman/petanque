@@ -5,12 +5,11 @@ export const DELETE_FORM = 'DELETE_FORM';
 export const DELETE_PLAYER = 'DELETE_PLAYER';
 export const EDIT_FORM = 'EDIT_FORM';
 export const EDIT_PLAYER = 'EDIT_PLAYER';
+export const CLEAR_STATE = 'CLEAR_STATE';
 
-
-export const setGameDate = (date) => ({
+export const setGameDate = () => ({
   type: SET_GAME_DATE,
-  date
-});
+  });
 
 export const changeValue = (key, value) => ({
   type: CHANGE_VALUE,
@@ -40,4 +39,9 @@ export const editForm = (playerId) => ({
 export const editPlayer = (playerId) => ({
   type: EDIT_PLAYER,
   playerId
+});
+
+export const clearNewGameState = () => ({
+  type: CLEAR_STATE,
+  
 });

@@ -6,6 +6,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from '../../containers/Home'
 import NewGame from '../../containers/NewGame'
+import Game from '../../containers/Game'
 
 
 function App({ 
@@ -31,6 +32,13 @@ function App({
                 <NewGame />
               ) : (
               <Redirect to="/" />
+              )}
+            </Route>
+            <Route path="/jeu">
+              {isLogged ? (
+                <Game />
+              ) : (
+              null
               )}
             </Route>
         	</Switch>

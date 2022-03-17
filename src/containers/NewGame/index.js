@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import NewGame from '../../components/NewGame';
-import { addPlayer, deletePlayer, editForm, editPlayer, deleteForm, setGameDate } from '../../store/actions/newGame';
-
-
+import { addPlayer, deletePlayer, editForm, editPlayer, deleteForm, setGameDate, clearNewGameState  } from '../../store/actions/newGame';
+import { makeGame } from '../../store/actions/game';
+ 
 const mapStateToProps = (state) => ({
-  date: state.newGame.date,
   player: state.newGame.player,
   playerId: state.newGame.playerId,
   players: state.newGame.players,
@@ -14,10 +13,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  
-    setGameDate: (date) => {
-      dispatch(setGameDate(date));
-    },
 
     handleAddPlayer: () => {
       dispatch(addPlayer());
@@ -38,6 +33,16 @@ const mapDispatchToProps = (dispatch) => ({
     editPlayer: (playerId) => {
       dispatch(editPlayer(playerId));
     },
+
+    makeGame: (players) => {
+      dispatch(makeGame(players));
+    },
+
+    clearNewGameState: () => {
+      dispatch(clearNewGameState());
+    }
+
+    
 
 });
 

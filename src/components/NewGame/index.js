@@ -1,18 +1,15 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
 import DatePicker, { registerLocale } from "react-datepicker";
 import Field from '../../containers/Field';
 
 import "react-datepicker/dist/react-datepicker.css";
 import './style.scss';
 
-import fr from 'date-fns/locale/fr';
-registerLocale('fr', fr)
 
 
 
 const NewGame = ({
-  setGameDate,
-  date,
   changeField,
   player,
   playerId,
@@ -24,12 +21,10 @@ const NewGame = ({
   showEditForm,
   showEditPlayerForm,
   editPlayer,
+  makeGame,
+  clearNewGameState,
   
 }) => {
-  
-  const setDate = (date) => {
-    setGameDate(date);
-  }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -54,12 +49,18 @@ const NewGame = ({
     editPlayer(playerId);
   }
 
+  let history = useHistory();
+
+  const handleMakeGame = () => {
+    makeGame(players);
+    clearNewGameState();
+    history.push("/jeu");
+  }
 
   return (
     <div className="newgame">
 
-    <DatePicker locale="fr" selected={date} onChange={(date:Date)=>setDate(date)} dateFormat="dd/MM/yyyy"
-          />
+    
 
       <form autoComplete="off" className="" onSubmit={handleSubmit}>
           <Field
@@ -76,6 +77,9 @@ const NewGame = ({
             OK
           </button>
         </form>
+
+        {players.length}
+        
         <ul>
           {players.map((player)=>(
               <li key={player.id}> {player.name} 
@@ -160,8 +164,16 @@ const NewGame = ({
             )
             )}
         </ul>
-
-
+        
+                <button
+                  type="button"
+                  className=""
+                  onClick={handleMakeGame}
+                  Redirect="/jeu"
+                >
+                  Tout est ok
+                </button>
+        
     </div>
 
   );
