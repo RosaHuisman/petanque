@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NewGame from '../../components/NewGame';
-import { addPlayer, deletePlayer, editForm, editPlayer, deleteForm, setGameDate, clearNewGameState  } from '../../store/actions/newGame';
+import { addPlayer, deletePlayer, editForm, editPlayer, deleteForm, clearNewGameState  } from '../../store/actions/newGame';
 import { makeGame } from '../../store/actions/game';
  
 const mapStateToProps = (state) => ({

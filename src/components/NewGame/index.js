@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
-import DatePicker, { registerLocale } from "react-datepicker";
 import Field from '../../containers/Field';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -59,8 +58,6 @@ const NewGame = ({
 
   return (
     <div className="newgame">
-
-    
 
       <form autoComplete="off" className="" onSubmit={handleSubmit}>
           <Field

@@ -3,27 +3,26 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Field = ({
+const FieldScore = ({
   value,
   type,
   name,
   placeholder,
   onChange,
   min,
-  max
+  max,
+  id
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };
-
-  const inputId = `field-${name}`;
 
   return (
     <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
       <input
         value={value}
         onChange={handleChange}
-        id={inputId}
+        id={id}
         type={type}
         className="field-input"
         placeholder={placeholder}
@@ -33,7 +32,7 @@ const Field = ({
       />
 
       <label
-        htmlFor={inputId}
+        htmlFor={id}
         className="field-label"
       >
         {placeholder}
@@ -42,7 +41,7 @@ const Field = ({
   );
 };
 
-Field.propTypes = {
+FieldScore.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -51,10 +50,10 @@ Field.propTypes = {
 };
 
 // Valeurs par défaut pour les props
-Field.defaultProps = {
+FieldScore.defaultProps = {
   value: '',
   type: 'text',
 };
 
 // == Export
-export default Field;
+export default FieldScore;

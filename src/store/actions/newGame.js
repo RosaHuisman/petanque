@@ -1,5 +1,5 @@
-export const SET_GAME_DATE = 'SET_GAME_DATE';
 export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const SET_GAME_DATE = 'SET_GAME_DATE';
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const DELETE_FORM = 'DELETE_FORM';
 export const DELETE_PLAYER = 'DELETE_PLAYER';

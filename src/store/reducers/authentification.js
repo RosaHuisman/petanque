@@ -14,12 +14,12 @@ import {
   const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
 
-      case CHANGE_VALUE: {
+      /* case CHANGE_VALUE: {
         return {
           ...state,
           [action.key]: action.value,
         };
-      }
+      } */
   
       case SAVE_USER: {
         const { pseudo, logged } = action.payload;

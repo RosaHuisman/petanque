@@ -1,3 +1,7 @@
-.column {
-    padding-left: 2em;
+.game_table_player::after {
+    content: " & ";
+}
+
+.game_table_player:last-child:after {
+    content: "";
 }
