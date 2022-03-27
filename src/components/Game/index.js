@@ -1,111 +1,91 @@
 import React from "react";
-import FieldScore from '../../containers/FieldScore';
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Round from './Round';
 
 
 import './style.scss';
 
 const Game = ({
-  makeFirstTour,
+  makeRound,
   round1,
+  round2,
+  round3,
   changeField,
   score,
   validScore,
-  game
+  game,
+  round1Open,
+  round2Open,
+  round3Open,
+  showFirstRound,
+  showSecondRound,
+  showThirdRound,
 }) => {
-  const handleMakeFirstTour = () => {
-    makeFirstTour();
+  
+
+  const handleShowFirstRound = () => {
+    showFirstRound()
   }
 
-  const handleValidScore = (id1, id2) => {
-    //evt.preventDefault();
-    console.log(game.scores);
-    console.log(id1)
-    console.log(id2)
-    validScore(id1, id2);
+  const handleShowSecondRound = () => {
+    showSecondRound()
   }
 
+  const handleShowThirdRound = () => {
+    showThirdRound()
+  }
   return (
     <div className="game">
+    
+    <button onClick={handleShowFirstRound}> Tour 1 </button>
+    <button onClick={handleShowSecondRound}> Tour 2 </button>
+    <button onClick={handleShowThirdRound}> Tour 3 </button>
 
-    <button
-      type="button"
-      className=""
-      onClick={handleMakeFirstTour}
-    >
-      Créer premier tour
-    </button>
-    {/* <form autoComplete="off" className="" onSubmit={handleSubmit} > */}
-    <table className="table">
-      <thead> 
-        <tr>
-          <td> Terrain</td> 
-          <td> Joueurs</td> 
-          <td> contre </td> 
-          <td> joueurs </td>
-          <td>  </td>
-        </tr>
-      </thead>
-      
-      <tbody>
-      
-        {round1.map((corridor) => (
-          <tr key={corridor.id}> 
-            <td> {corridor.id}</td> 
-           
-            <td> 
-              <ul>
-                {corridor.team1.players.map((player) => {
-                  return <span key={player.id} className="game_table_player">{player.name}</span>
-                })} 
-              </ul> 
-              <FieldScore
-                id={corridor.team1.id}
-                name={"score-team-"+corridor.team1.id}
-                placeholder="score"
-                type="number"
-                min="0" 
-                max="13"
-                onChange={changeField}
-                value={score}
-              />
-            </td> 
-            <td></td>
-            <td> 
-              <ul>
-                {corridor.team2.players.map((player) => {
-                  return <span key={player.id} className="game_table_player">{player.name}</span>
-              })} 
-              </ul>  
-              <FieldScore
-                id={corridor.team2.id}
-                name={"score-team-"+corridor.team2.id}
-                placeholder="score"
-                type="number"
-                min="0" 
-                max="13"
-                onChange={changeField}
-                value={score}
-              /> 
-            </td>
-            <td>  
-              <button
-                type="submit"
-                className="login-form-button"
-                //id1={corridor.team1.id}
-                //id2={corridor.team2.id}
-                onClick={() => {handleValidScore(corridor.team1.id, corridor.team2.id)}}
-              >
-                OK
-              </button>
-            </td> 
-          </tr>
-          )
-        )}
-        
-      </tbody> 
-               
-    </table>
-    {/* </form> */} 
+    {round1Open ? (
+      <div>
+      <Round 
+        makeRound={makeRound}
+        changeField={changeField}
+        score={score}
+        validScore={validScore}
+        game={game}
+        round={round1}
+        id='1'
+      />
+      </div>
+    ) : null}
+
+    {round2Open ? (
+      <div>
+      <Round 
+        makeRound={makeRound}
+        changeField={changeField}
+        score={score}
+        validScore={validScore}
+        game={game}
+        round={round2}
+        id='2'
+      />
+      </div>
+    ) : null}
+
+    {round3Open ? (
+      <div>
+      <Round 
+        makeRound={makeRound}
+        changeField={changeField}
+        score={score}
+        validScore={validScore}
+        game={game}
+        round={round3}
+        id='3'
+      />
+      </div>
+    ) : null}
+    
+
+
+   
 
     </div>
 

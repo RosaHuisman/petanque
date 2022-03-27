@@ -1,16 +1,28 @@
 import { makeTour } from '../selectors/makeTour';
+import { validPlayersScore } from '../selectors/validPlayersScore';
+
 
 import {
     MAKE_GAME,
-    MAKE_FIRST_TOUR,
+    MAKE_ROUND,
     CHANGE_VALUE,
-    VALID_SCORE
+    VALID_SCORE,
+    SHOW_FIRST_ROUND,
+    SHOW_SECOND_ROUND,
+    SHOW_THIRD_ROUND
   } from '../actions/game';
   
   export const initialState = {
     players: [],
     round1: [],
+    round2: [],
+    round3: [],
     scores: [],
+    round1Open: false,
+    round2Open: false,
+    round3Open: false,
+ 
+
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -19,38 +31,68 @@ import {
       case MAKE_GAME: {
         return {
           ...state,
-          players: action.players 
+          players: action.players,
+          scores: [] 
         }
       }
       
-      case MAKE_FIRST_TOUR: {         
+      case MAKE_ROUND: {         
         return {
           ...state,
-          round1: makeTour(state.players)
+          ['round'+action.id]: makeTour(state.players),
+          
+
         }
       }
 
       case CHANGE_VALUE: {
+        console.log(action.roundId)
         return {
           ...state,
-          scores: {
-            ...state.scores,
-            [action.name]: action.value
-          },
-          
+          scores: 
+            {
+              ['round'+action.roundId]: {
+                [action.name]: action.value,
+              ...state.scores
+              }
+            },
         };
       }
 
       case VALID_SCORE: {
-        console.log(action.id1);
-        console.log(action.id2);
-        console.log(state.players);
-        // ici faire une fonction qui va rentrer le score des joueurs dans le state.players, avec un true ou false s'ils ont gagné ou non la partie
         return {
-          ...state
+          ...state,
+          round1: validPlayersScore(action.id1, action.id2, state.scores, state.round1)
+        }
+      }
+
+      case SHOW_FIRST_ROUND: {
+        return {
+          ...state,
+          round1Open: true,
+          round2Open: false,
+          round3Open: false
+
         }
       }
       
+      case SHOW_SECOND_ROUND: {
+        return {
+          ...state,
+          round2Open: true,
+          round1Open: false,
+          round3Open: false
+        }
+      }
+
+      case SHOW_THIRD_ROUND: {
+        return {
+          ...state,
+          round3Open: true,
+          round2Open: false,
+          round1Open: false
+        }
+      }
       
       default:
         return state;

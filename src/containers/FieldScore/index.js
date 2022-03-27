@@ -10,8 +10,9 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 
-  onChange: (value) => {
-    dispatch(changeValue(ownProps.name, value));
+  onChange: (value, roundId) => {
+    console.log(ownProps.name, value, roundId)
+    dispatch(changeValue(ownProps.name, value, roundId));
   },
 
 });

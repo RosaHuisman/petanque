@@ -11,11 +11,14 @@ const FieldScore = ({
   onChange,
   min,
   max,
-  id
+  id,
+  roundId
 }) => {
-  const handleChange = (evt) => {
-    onChange(evt.target.value, name);
+  const handleChange = (evt, roundId) => {
+    onChange(evt.target.value, name, roundId);
   };
+
+  console.log(roundId)
 
   return (
     <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
@@ -29,6 +32,7 @@ const FieldScore = ({
         name={name}
         min={min}
         max={max}
+        roundId={roundId}
       />
 
       <label
