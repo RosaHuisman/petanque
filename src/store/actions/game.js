@@ -6,11 +6,15 @@ export const SHOW_FIRST_ROUND = 'SHOW_FIRST_ROUND';
 export const SHOW_SECOND_ROUND = 'SHOW_SECOND_ROUND';
 export const SHOW_THIRD_ROUND = 'SHOW_THIRD_ROUND';
 
-export const changeValue = (name, value, roundId) => ({
+export const changeValue = (name, value, player1, player2, roundid) => ({
   type: CHANGE_VALUE,
   value,
   name,
-  roundId
+  player1,
+  player2,
+  roundid,
+  //corridorid,
+  //teamid
 });
 
 export const makeGame = (players) => ({

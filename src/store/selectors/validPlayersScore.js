@@ -40,7 +40,6 @@ export const validPlayersScore = (id1, id2, scores, round) => {
         }
         player.score = (scoreTeam1 - scoreTeam2);
     })
-    console.log(playersTeam1)
 
     playersTeam2.forEach((player) => {
         if (scoreTeam2 == 13) {

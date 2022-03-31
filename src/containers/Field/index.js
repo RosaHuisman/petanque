@@ -10,7 +10,6 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 
   onChange: (value) => {
-    //console.log('nom', ownProps.name);
     dispatch(changeValue(ownProps.name, value));
   },
 

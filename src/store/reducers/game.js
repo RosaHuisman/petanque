@@ -1,5 +1,6 @@
 import { makeTour } from '../selectors/makeTour';
 import { validPlayersScore } from '../selectors/validPlayersScore';
+import { enterScores } from '../selectors/enterScores';
 
 
 import {
@@ -46,19 +47,17 @@ import {
       }
 
       case CHANGE_VALUE: {
-        console.log(action.roundId)
+        
         return {
           ...state,
-          scores: 
-            {
-              ['round'+action.roundId]: {
-                [action.name]: action.value,
-              ...state.scores
-              }
-            },
+          ['round'+action.id]: enterScores(state.round1, action.player1, action.player2, action.value),
+          [action.name]: action.value,
+      
+          
         };
       }
 
+      
       case VALID_SCORE: {
         return {
           ...state,

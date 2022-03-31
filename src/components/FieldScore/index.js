@@ -11,32 +11,39 @@ const FieldScore = ({
   onChange,
   min,
   max,
-  id,
-  roundId
+  teamid,
+  corridorid,
+  roundid,
+  player1,
+  player2,
 }) => {
-  const handleChange = (evt, roundId) => {
-    onChange(evt.target.value, name, roundId);
+  const handleChange = (evt) => {
+    onChange(evt.target.value, name, player1, player2, roundid);
+    //onChange(evt.target.value, name, roundid, corridorid, teamid);
   };
 
-  console.log(roundId)
 
   return (
     <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
       <input
         value={value}
         onChange={handleChange}
-        id={id}
         type={type}
         className="field-input"
         placeholder={placeholder}
         name={name}
         min={min}
         max={max}
-        roundId={roundId}
+        roundid={roundid}
+        corridorid={corridorid}
+        teamid={teamid}
+        player1={player1}
+        player2={player2}
+
       />
 
       <label
-        htmlFor={id}
+        htmlFor={teamid}
         className="field-label"
       >
         {placeholder}

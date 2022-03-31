@@ -50,7 +50,7 @@ const Game = ({
         validScore={validScore}
         game={game}
         round={round1}
-        id='1'
+        roundid='1'
       />
       </div>
     ) : null}
@@ -64,7 +64,7 @@ const Game = ({
         validScore={validScore}
         game={game}
         round={round2}
-        id='2'
+        roundid='2'
       />
       </div>
     ) : null}
@@ -78,7 +78,7 @@ const Game = ({
         validScore={validScore}
         game={game}
         round={round3}
-        id='3'
+        roundid='3'
       />
       </div>
     ) : null}

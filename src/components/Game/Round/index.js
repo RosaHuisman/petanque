@@ -10,12 +10,12 @@ const Game = ({
   changeField,
   score,
   validScore,
-  id,
+  roundid,
   game,
 }) => {
 
   const handleMakeRound = () => {
-    makeRound(id);
+    makeRound(roundid);
   }
 
   const handleValidScore = (id1, id2) => {
@@ -26,7 +26,7 @@ const Game = ({
     <div className="game">
 
 
-{id == 1 && round.length == 0 ? (
+{roundid == 1 && round.length == 0 ? (
   <button
       type="button"
       className=""
@@ -37,7 +37,7 @@ const Game = ({
 ) : null}
 
 
-{id == 2 && round.length == 0 ? (
+{roundid == 2 && round.length == 0 ? (
   <button
       type="button"
       className=""
@@ -48,7 +48,7 @@ const Game = ({
 ) : null}
 
 
-{id == 3 && round.length == 0 ? (
+{roundid == 3 && round.length == 0 ? (
   <button
       type="button"
       className=""
@@ -57,6 +57,8 @@ const Game = ({
       Créer tour
     </button>
 ) : null}
+
+{roundid}
     
     <table className="table">
       <thead> 
@@ -84,7 +86,6 @@ const Game = ({
               })} 
             </ul> 
             <FieldScore
-              id={corridor.team1.id}
               name={"score-team-"+corridor.team1.id}
               placeholder="score"
               type="number"
@@ -92,7 +93,12 @@ const Game = ({
               max="13"
               onChange={changeField}
               value={score}
-              roundId={id}
+              roundid={roundid}
+              corridorid={corridor.id}
+              teamid={corridor.team1.id}
+              player1={corridor.team1.players[0]}
+              player2={corridor.team1.players[1]}
+
             />
           </td> 
           <td></td>
@@ -103,7 +109,6 @@ const Game = ({
             })} 
             </ul>  
             <FieldScore
-              id={corridor.team2.id}
               name={"score-team-"+corridor.team2.id}
               placeholder="score"
               type="number"
@@ -111,7 +116,11 @@ const Game = ({
               max="13"
               onChange={changeField}
               value={score}
-              roundId={id}
+              roundid={roundid}
+              corridorid={corridor.id}
+              teamid={corridor.team2.id}
+              player1={corridor.team2.players[0]}
+              player2={corridor.team2.players[1]}
             /> 
           </td>
           <td>  
