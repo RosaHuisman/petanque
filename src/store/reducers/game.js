@@ -10,7 +10,8 @@ import {
     VALID_SCORE,
     SHOW_FIRST_ROUND,
     SHOW_SECOND_ROUND,
-    SHOW_THIRD_ROUND
+    SHOW_THIRD_ROUND,
+    EDIT_SCORE
   } from '../actions/game';
   
   export const initialState = {
@@ -18,12 +19,11 @@ import {
     round1: [],
     round2: [],
     round3: [],
-    scores: [],
     round1Open: false,
     round2Open: false,
     round3Open: false,
- 
-
+    corridorIds: [0],
+    scoreIsEntered: false,
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -33,7 +33,6 @@ import {
         return {
           ...state,
           players: action.players,
-          scores: [] 
         }
       }
       
@@ -41,27 +40,31 @@ import {
         return {
           ...state,
           ['round'+action.id]: makeTour(state.players),
-          
-
         }
       }
 
-      case CHANGE_VALUE: {
-        
-        return {
-          ...state,
-          ['round'+action.id]: enterScores(state.round1, action.player1, action.player2, action.value),
-          [action.name]: action.value,
-      
-          
+      case CHANGE_VALUE: {       
+          return {
+            ...state,
+            ['round'+action.id]: enterScores(state.round1, action.player1, action.player2, action.value),
+            [action.name]: action.value,
+          } 
         };
-      }
-
+      
       
       case VALID_SCORE: {
         return {
           ...state,
-          round1: validPlayersScore(action.id1, action.id2, state.scores, state.round1)
+          scoreIsEntered: true,
+          corridorIds: [...state.corridorIds, action.corridorId],
+        }
+      }
+
+      case EDIT_SCORE: {
+        console.log(action.corridorId);
+        return {
+          ...state,
+          corridorIds: state.corridorIds.filter(id => id !== action.corridorId),
         }
       }
 

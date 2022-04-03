@@ -5,6 +5,7 @@ export const VALID_SCORE = 'VALID_SCORE';
 export const SHOW_FIRST_ROUND = 'SHOW_FIRST_ROUND';
 export const SHOW_SECOND_ROUND = 'SHOW_SECOND_ROUND';
 export const SHOW_THIRD_ROUND = 'SHOW_THIRD_ROUND';
+export const EDIT_SCORE = 'EDIT_SCORE';
 
 export const changeValue = (name, value, player1, player2, roundid) => ({
   type: CHANGE_VALUE,
@@ -13,8 +14,6 @@ export const changeValue = (name, value, player1, player2, roundid) => ({
   player1,
   player2,
   roundid,
-  //corridorid,
-  //teamid
 });
 
 export const makeGame = (players) => ({
@@ -28,10 +27,11 @@ export const makeGame = (players) => ({
     id
   });
 
-  export const validScore = (id1, id2) => ({
+  export const validScore = (corridorId, idTeam1, idTeam2) => ({
     type: VALID_SCORE,
-    id1,
-    id2
+    corridorId,
+    idTeam1,
+    idTeam2
   });
 
   export const showFirstRound = () => ({
@@ -44,4 +44,9 @@ export const makeGame = (players) => ({
 
   export const showThirdRound = () => ({
     type: SHOW_THIRD_ROUND,
+  });
+
+  export const editScore = (corridorId) => ({
+    type: EDIT_SCORE,
+    corridorId
   });

@@ -4,22 +4,28 @@ import FieldScore from '../../../containers/FieldScore';
 
 import './style.scss';
 
-const Game = ({
+const Round = ({
   makeRound,
   round,
   changeField,
-  score,
   validScore,
   roundid,
   game,
+  scoreIsEntered,
+  corridorIds,
+  editScore,
 }) => {
 
   const handleMakeRound = () => {
     makeRound(roundid);
   }
 
-  const handleValidScore = (id1, id2) => {
-    validScore(id1, id2);
+  const handleValidScore = (corridorId, idTeam1, idTeam2) => {
+    validScore(corridorId, idTeam1, idTeam2);
+  }
+
+  const handleEditScore = (corridorId) => {
+    editScore(corridorId);
   }
 
   return (
@@ -57,9 +63,8 @@ const Game = ({
       Créer tour
     </button>
 ) : null}
-
-{roundid}
     
+    {roundid}
     <table className="table">
       <thead> 
         <tr>
@@ -71,28 +76,56 @@ const Game = ({
         </tr>
       </thead>
       
-      <tbody>
+       
       
       { round.length != 0 ? (
 
       round.map((corridor) => (
+        <tbody>
         <tr key={corridor.id}> 
           <td> {corridor.id}</td> 
         
           <td> 
-            <ul>
+            <div>
               {corridor.team1.players.map((player) => {
                 return <span key={player.id} className="game_table_player">{player.name}</span>
               })} 
-            </ul> 
+            </div>
+          </td>
+          <td>
+            <div>
+              {corridor.team2.players.map((player) => {
+                return <span key={player.id} className="game_table_player">{player.name}</span>
+            })} 
+            </div> 
+          </td>
+        </tr>
+
+        {(scoreIsEntered && corridorIds.includes(corridor.id)) ? (
+          <tr>
+          <td> </td>
+          <td>{corridor.team1.players[0].score}</td>    
+          <td> {corridor.team2.players[0].score} </td>
+          <td> <button
+              type="button"
+              className="login-form-button"
+              onClick={() => handleEditScore(corridor.id)}
+            >
+              Modifier
+            </button> </td>
+        </tr>
+          
+        ) : (
+        <tr>
+          <td></td>
+          <td>
             <FieldScore
-              name={"score-team-"+corridor.team1.id}
+              name={roundid+"-score-team-"+corridor.team1.id}
               placeholder="score"
               type="number"
               min="0" 
               max="13"
               onChange={changeField}
-              value={score}
               roundid={roundid}
               corridorid={corridor.id}
               teamid={corridor.team1.id}
@@ -101,21 +134,15 @@ const Game = ({
 
             />
           </td> 
-          <td></td>
           <td> 
-            <ul>
-              {corridor.team2.players.map((player) => {
-                return <span key={player.id} className="game_table_player">{player.name}</span>
-            })} 
-            </ul>  
+             
             <FieldScore
-              name={"score-team-"+corridor.team2.id}
+              name={roundid+"-score-team-"+corridor.team2.id}
               placeholder="score"
               type="number"
               min="0" 
               max="13"
               onChange={changeField}
-              value={score}
               roundid={roundid}
               corridorid={corridor.id}
               teamid={corridor.team2.id}
@@ -123,29 +150,38 @@ const Game = ({
               player2={corridor.team2.players[1]}
             /> 
           </td>
+
           <td>  
             <button
               type="submit"
               className="login-form-button"
-              onClick={() => {handleValidScore(corridor.team1.id, corridor.team2.id)}}
+              onClick={() => {handleValidScore(corridor.id, corridor.team1.id, corridor.team2.id)}}
             >
               OK
             </button>
-          </td> 
+          </td>
         </tr>
-        )
-      )
+        )}
 
+        
+          
+        </tbody>
+
+        )
+        )
+
+       
+       
       ) : null }
         
         
-      </tbody>    
+         
     </table> 
-
+    
     </div>
 
   );
 
 };
 
-export default Game;
+export default Round;

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const FieldScore = ({
-  value,
   type,
   name,
   placeholder,
@@ -16,15 +15,20 @@ const FieldScore = ({
   roundid,
   player1,
   player2,
+  valueRound1,
+  valueRound2,
+  valueRound3,
+  value
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name, player1, player2, roundid);
-    //onChange(evt.target.value, name, roundid, corridorid, teamid);
   };
 
 
   return (
-    <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
+    
+      <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
+
       <input
         value={value}
         onChange={handleChange}
@@ -48,7 +52,9 @@ const FieldScore = ({
       >
         {placeholder}
       </label>
+      
     </div>
+   
   );
 };
 

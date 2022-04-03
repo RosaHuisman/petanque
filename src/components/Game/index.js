@@ -20,6 +20,10 @@ const Game = ({
   showFirstRound,
   showSecondRound,
   showThirdRound,
+  corridorIds,
+  scoreIsEntered,
+  editScore,
+
 }) => {
   
 
@@ -51,6 +55,9 @@ const Game = ({
         game={game}
         round={round1}
         roundid='1'
+        corridorIds={corridorIds}
+        scoreIsEntered={scoreIsEntered}
+        editScore={editScore}
       />
       </div>
     ) : null}
@@ -65,6 +72,8 @@ const Game = ({
         game={game}
         round={round2}
         roundid='2'
+        corridorIds={corridorIds}
+        editScore={editScore}
       />
       </div>
     ) : null}
@@ -79,6 +88,8 @@ const Game = ({
         game={game}
         round={round3}
         roundid='3'
+        corridorIds={corridorIds}
+        editScore={editScore}
       />
       </div>
     ) : null}
