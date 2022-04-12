@@ -20,9 +20,13 @@ const Game = ({
   showFirstRound,
   showSecondRound,
   showThirdRound,
-  corridorIds,
+  corridorIds1,
+  corridorIds2,
+  corridorIds3,
   scoreIsEntered,
   editScore,
+  roundid,
+  endGame,
 
 }) => {
   
@@ -38,12 +42,18 @@ const Game = ({
   const handleShowThirdRound = () => {
     showThirdRound()
   }
+
+  const handleEndGame = () => {
+    endGame();
+  }
   return (
     <div className="game">
     
     <button onClick={handleShowFirstRound}> Tour 1 </button>
     <button onClick={handleShowSecondRound}> Tour 2 </button>
     <button onClick={handleShowThirdRound}> Tour 3 </button>
+
+    <button onClick={handleEndGame}> Tout est OK </button>
 
     {round1Open ? (
       <div>
@@ -55,7 +65,7 @@ const Game = ({
         game={game}
         round={round1}
         roundid='1'
-        corridorIds={corridorIds}
+        corridorIds={corridorIds1}
         scoreIsEntered={scoreIsEntered}
         editScore={editScore}
       />
@@ -72,7 +82,7 @@ const Game = ({
         game={game}
         round={round2}
         roundid='2'
-        corridorIds={corridorIds}
+        corridorIds={corridorIds2}
         editScore={editScore}
       />
       </div>
@@ -88,7 +98,7 @@ const Game = ({
         game={game}
         round={round3}
         roundid='3'
-        corridorIds={corridorIds}
+        corridorIds={corridorIds3}
         editScore={editScore}
       />
       </div>

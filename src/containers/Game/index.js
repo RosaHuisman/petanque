@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from '../../components/Game';
-import { makeRound, validScore, showFirstRound, showSecondRound, showThirdRound, editScore } from '../../store/actions/game';
+import { makeRound, validScore, showFirstRound, showSecondRound, showThirdRound, editScore, endGame } from '../../store/actions/game';
 
  
 const mapStateToProps = (state) => ({
@@ -13,7 +13,9 @@ const mapStateToProps = (state) => ({
   round2Open: state.game.round2Open,
   round3Open: state.game.round3Open,
   scoreIsEntered: state.game.scoreIsEntered,
-  corridorIds: state.game.corridorIds,
+  corridorIds1: state.game.corridorIds1,
+  corridorIds2: state.game.corridorIds2,
+  corridorIds3: state.game.corridorIds3,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(makeRound(id));
   },
 
-  validScore: (corridorId, idTeam1, idTeam2) => {
-    dispatch(validScore(corridorId, idTeam1, idTeam2))
+  validScore: (corridorId, idTeam1, idTeam2, roundid) => {
+    dispatch(validScore(corridorId, idTeam1, idTeam2, roundid));
   },
 
   showFirstRound: () => {
@@ -38,9 +40,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(showThirdRound());
   },
 
-  editScore: (corridorId) => {
-    dispatch(editScore(corridorId));
-  }
+  editScore: (corridorId, roundid) => {
+    dispatch(editScore(corridorId, roundid));
+  },
+  
+  endGame: () => {
+    dispatch(endGame());
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

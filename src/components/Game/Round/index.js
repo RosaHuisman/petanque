@@ -7,11 +7,11 @@ import './style.scss';
 const Round = ({
   makeRound,
   round,
-  changeField,
+  changeFieldScore,
   validScore,
   roundid,
   game,
-  scoreIsEntered,
+  //scoreIsEntered,
   corridorIds,
   editScore,
 }) => {
@@ -20,12 +20,12 @@ const Round = ({
     makeRound(roundid);
   }
 
-  const handleValidScore = (corridorId, idTeam1, idTeam2) => {
-    validScore(corridorId, idTeam1, idTeam2);
+  const handleValidScore = (corridorId, idTeam1, idTeam2, roundid) => {
+    validScore(corridorId, idTeam1, idTeam2, roundid);
   }
 
-  const handleEditScore = (corridorId) => {
-    editScore(corridorId);
+  const handleEditScore = (corridorId, roundid) => {
+    editScore(corridorId, roundid);
   }
 
   return (
@@ -101,15 +101,16 @@ const Round = ({
           </td>
         </tr>
 
-        {(scoreIsEntered && corridorIds.includes(corridor.id)) ? (
+
+        {(corridorIds.includes(corridor.id)) ? (
           <tr>
           <td> </td>
-          <td>{corridor.team1.players[0].score}</td>    
-          <td> {corridor.team2.players[0].score} </td>
+          <td>{corridor.team1.players[0].score} {corridor.team1.players[1].score}</td>    
+          <td> {corridor.team2.players[0].score} {corridor.team2.players[1].score} </td>
           <td> <button
               type="button"
               className="login-form-button"
-              onClick={() => handleEditScore(corridor.id)}
+              onClick={() => handleEditScore(corridor.id, roundid)}
             >
               Modifier
             </button> </td>
@@ -125,7 +126,7 @@ const Round = ({
               type="number"
               min="0" 
               max="13"
-              onChange={changeField}
+              onChange={changeFieldScore}
               roundid={roundid}
               corridorid={corridor.id}
               teamid={corridor.team1.id}
@@ -142,7 +143,7 @@ const Round = ({
               type="number"
               min="0" 
               max="13"
-              onChange={changeField}
+              onChange={changeFieldScore}
               roundid={roundid}
               corridorid={corridor.id}
               teamid={corridor.team2.id}
@@ -155,7 +156,7 @@ const Round = ({
             <button
               type="submit"
               className="login-form-button"
-              onClick={() => {handleValidScore(corridor.id, corridor.team1.id, corridor.team2.id)}}
+              onClick={() => {handleValidScore(corridor.id, corridor.team1.id, corridor.team2.id, roundid)}}
             >
               OK
             </button>

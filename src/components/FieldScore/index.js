@@ -24,11 +24,11 @@ const FieldScore = ({
     onChange(evt.target.value, name, player1, player2, roundid);
   };
 
-
+  //console.log(value)
   return (
     
       <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
-
+       
       <input
         value={value}
         onChange={handleChange}

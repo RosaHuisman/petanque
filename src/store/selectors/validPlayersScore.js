@@ -1,60 +1,38 @@
-export const validPlayersScore = (id1, id2, scores, round) => {    
-
-    // players team1
-    let playersTeam1=[];
-    round.forEach(corridor => {
-        if (corridor.team1.id === id1) {
-            corridor.team1.players.map((playerOfTeam)=> {
-            playersTeam1.push(playerOfTeam)
+export const validPlayersScore = (players, round1, round2, round3) => {    
+//console.log(players);
+//console.log(round1);
+//console.log(round2);
+//console.log(round3);
+console.log(players)
+console.log(round1)
+console.log(round2)
+// round par round, voir les différents terrains, rentrer les scores des joueurs dans players, et s'ils ont gagné la partie
+ // players team1
+    /* players.map((player) => {
+        round1.map((corridor) => {    
+            corridor.team1.players.map((playerSearched) => {
+                console.log(playerSearched.score > corridor.team2.players[0].score)
+                //console.log(corridor.team2.players[0].score)
+                if (playerSearched.score > corridor.team2.players[0].score) {
+                    player.winRounds = [true];
+                } else {
+                    player.winRounds = [false];
+                }
+                if (player.id == playerSearched.id) {
+                    player.score = playerSearched.score;
+                    //console.log(player)
+                }
             })
-        }
-    });
-    
-    // players team2
-    let playersTeam2=[];
-    round.forEach(corridor => {
-        if (corridor.team2.id === id2) {
-            corridor.team2.players.map((playerOfTeam)=> {
-            playersTeam2.push(playerOfTeam)
+            corridor.team2.players.map((playerSearched) => {
+                if (player.id == playerSearched.id) {
+                    player.score = playerSearched.score;
+                    //console.log(player)
+                }
             })
-        }
-    });
+        })
 
-    // scores team1 & team2
-    let scoreTeam1 = 0;
-    let scoreTeam2 = 0;
-    for(const [key, value ] of Object.entries(scores)) {
-        if (getLastChar(key) == id1) {
-            scoreTeam1 = value
-        }
-        if (getLastChar(key) == id2) {
-            scoreTeam2 = value
-        }           
-    }
-    
-    playersTeam1.forEach((player) => {
-        if (scoreTeam1 == 13) {
-            player.winRound = true;
-        } else {
-            player.winRound = false;
-        }
-        player.score = (scoreTeam1 - scoreTeam2);
-    })
+    }) */
 
-    playersTeam2.forEach((player) => {
-        if (scoreTeam2 == 13) {
-            player.winRound = true;
-        } else {
-            player.winRound = false;
-        }
-        player.score = (scoreTeam2 - scoreTeam1);
-    })
-    
-    return round;   
+    console.log(players)
+
 }
-
-function getLastChar(string) { 
-    return string.charAt(string.length-1); 
-} 
-
-
