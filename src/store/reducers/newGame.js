@@ -43,7 +43,6 @@ import {
             {
               id: (Math.max(...ids) +1),
               name: state.player,
-              score: 0,
             },
             ...state.players,
           ],
@@ -79,7 +78,7 @@ import {
       case EDIT_PLAYER: {
         return {
           ...state,
-          players: state.players.map(player => player.id == action.playerId ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score)} : player),
+          players: state.players.map(player => Number(player.id) === Number(action.playerId) ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score)} : player),
           editPlayer: '',
           showEditPlayerForm: !state.showEditPlayerForm,
         }

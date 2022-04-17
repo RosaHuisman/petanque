@@ -10,6 +10,8 @@ const Round = ({
   changeFieldScore,
   validScore,
   roundid,
+  game,
+  //scoreIsEntered,
   corridorIds,
   editScore,
 }) => {
@@ -29,7 +31,8 @@ const Round = ({
   return (
     <div className="game">
 
-{Number(roundid) === 1 && Number(round.length) === 0 ? (
+
+{roundid == 1 && round.length == 0 ? (
   <button
       type="button"
       className=""
@@ -40,7 +43,7 @@ const Round = ({
 ) : null}
 
 
-{Number(roundid) === 2 && Number(round.length) === 0 ? (
+{roundid == 2 && round.length == 0 ? (
   <button
       type="button"
       className=""
@@ -51,7 +54,7 @@ const Round = ({
 ) : null}
 
 
-{Number(roundid) === 3 && Number(round.length) === 0 ? (
+{roundid == 3 && round.length == 0 ? (
   <button
       type="button"
       className=""
@@ -61,6 +64,7 @@ const Round = ({
     </button>
 ) : null}
     
+    {roundid}
     <table className="table">
       <thead> 
         <tr>
@@ -74,7 +78,7 @@ const Round = ({
       
        
       
-      { Number(round.length) !== 0 ? (
+      { round.length != 0 ? (
 
       round.map((corridor) => (
         <tbody>
@@ -101,23 +105,8 @@ const Round = ({
         {(corridorIds.includes(corridor.id)) ? (
           <tr>
           <td> </td>
-          { Number(roundid) === 1 ? (
-            <>
-              <td>{corridor.team1.players[0].scoreRound1} {corridor.team1.players[1].scoreRound1}</td>    
-              <td> {corridor.team2.players[0].scoreRound1} {corridor.team2.players[1].scoreRound1} </td>
-            </>
-          ) : Number(roundid) === 2 ? (
-            <>
-              <td>{corridor.team1.players[0].scoreRound2} {corridor.team1.players[1].scoreRound2}</td>
-              <td> {corridor.team2.players[0].scoreRound2} {corridor.team2.players[1].scoreRound2} </td>
-            </>
-          ) : Number(roundid) === 3 ? (
-            <>
-              <td>{corridor.team1.players[0].scoreRound3} {corridor.team1.players[1].scoreRound3}</td>
-              <td> {corridor.team2.players[0].scoreRound3} {corridor.team2.players[1].scoreRound3} </td>
-            </>
-          ) : null}
-          
+          <td>{corridor.team1.players[0].score} {corridor.team1.players[1].score}</td>    
+          <td> {corridor.team2.players[0].score} {corridor.team2.players[1].score} </td>
           <td> <button
               type="button"
               className="login-form-button"

@@ -81,7 +81,7 @@ const NewGame = ({
           {players.map((player)=>(
               <li key={player.id}> {player.name} 
                 
-                {(playerId == player.id && showDeletePlayerForm) ? (
+                {(Number(playerId) === Number(player.id) && showDeletePlayerForm) ? (
                   <form 
                     autoComplete="off" 
                     className="" 
@@ -116,7 +116,7 @@ const NewGame = ({
                 </button>
                 )}
 
-                  {(playerId == player.id && showEditPlayerForm) ? (
+                  {(Number(playerId) === Number(player.id) && showEditPlayerForm) ? (
                   <form 
                     autoComplete="off" 
                     className="" 

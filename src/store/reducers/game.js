@@ -1,5 +1,4 @@
 import { makeTour } from '../selectors/makeTour';
-import { validPlayersScore } from '../selectors/validPlayersScore';
 import { enterScores } from '../selectors/enterScores';
 
 
@@ -27,7 +26,6 @@ import {
     corridorIds1: [0],
     corridorIds2: [0],
     corridorIds3: [0],
-    scoreIsEntered: false,
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -44,7 +42,6 @@ import {
         return {
           ...state,
           ['round'+action.id]: makeTour(state.players),
-          //corridorIds: [0],
           scoreIsEntered: false,
         }
       }
@@ -55,79 +52,64 @@ import {
             [action.name]: action.value,
           } 
         };
-      
-        case CHANGE_VALUE_SCORE: {
-          function roundInState(actionRoundId) {
-            if (actionRoundId == 1) {
-              return state.round1;
-            }
-            if (actionRoundId == 2) {
-              return state.round2;
-            }
-            if (actionRoundId == 3) {
-              return state.round3;
-            }
+
+          case CHANGE_VALUE_SCORE: {
           }
-     
+          if (Number(action.roundid) === 1) {
             return {
               ...state,
-              ['round'+action.id]: enterScores(roundInState(action.roundid), action.player1, action.player2, action.value),
+              round1: enterScores(state.round1, action.player1, action.player2, action.value, action.roundid),
               [action.name]: action.value,
-            } 
-          };
+              players: state.players,
+              }
+          } else if (Number(action.roundid) === 2) {
+            return {
+              ...state,
+              round2: enterScores(state.round2, action.player1, action.player2, action.value, action.roundid),
+              [action.name]: action.value,
+              }
+          } else if (Number(action.roundid) === 3) {
+            return {
+              ...state,
+              round3: enterScores(state.round3, action.player1, action.player2, action.value, action.roundid),
+              [action.name]: action.value,
+              }
+            }
       
       case VALID_SCORE: {
         }
-
-        if (action.roundid == 1) {
+        if (Number(action.roundid) === 1) {
           return {
             ...state,
-            scoreIsEntered: true,
             corridorIds1: [...state.corridorIds1, action.corridorId],
           }
-        } else if (action.roundid == 2) {
+        } else if (Number(action.roundid) === 2) {
           return {
             ...state,
-            scoreIsEntered: true,
             corridorIds2: [...state.corridorIds2, action.corridorId],
           }
-        } else if (action.roundid == 3) {
+        } else if (Number(action.roundid) === 3) {
           return {
             ...state,
-            scoreIsEntered: true,
             corridorIds3: [...state.corridorIds3, action.corridorId],
           }
         }
 
       case EDIT_SCORE: {
-        function roundInState(actionRoundId) {
-          if (actionRoundId == 1) {
-            return 'state.corridorIds1';
-          }
-          if (actionRoundId == 2) {
-            return 'state.corridorIds2';
-          }
-          if (actionRoundId == 3) {
-            return 'state.corridorIds3';
-          }
-        }
 
-        if (action.roundid == 1) {
+        if (Number(action.roundid) === 1) {
           return {
             ...state,
-            //scoreIsEntered: true,
             corridorIds1: state.corridorIds1.filter(id => id !== action.corridorId),
           }
-        } else if (action.roundid == 2) {
+        } else if (Number(action.roundid) === 2) {
           return {
             ...state,
-            //scoreIsEntered: true,
             corridorIds2: state.corridorIds2.filter(id => id !== action.corridorId),
           }
-        } else if (action.roundid == 3) {
+        } else if (Number(action.roundid) === 3) {
           return {
             ...state,
-            //scoreIsEntered: true,
             corridorIds3: state.corridorIds3.filter(id => id !== action.corridorId),
           }
         }
