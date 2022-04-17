@@ -24,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(makeRound(id));
   },
 
-  validScore: (corridorId, idTeam1, idTeam2, roundid) => {
-    dispatch(validScore(corridorId, idTeam1, idTeam2, roundid));
+  validScore: (corridorId, idTeam1, idTeam2, roundid, corridor) => {
+    dispatch(validScore(corridorId, idTeam1, idTeam2, roundid, corridor));
   },
 
   showFirstRound: () => {

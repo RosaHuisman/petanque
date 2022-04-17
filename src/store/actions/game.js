@@ -38,12 +38,13 @@ export const makeGame = (players) => ({
     id
   });
 
-  export const validScore = (corridorId, idTeam1, idTeam2, roundid) => ({
+  export const validScore = (corridorId, idTeam1, idTeam2, roundid, corridor) => ({
     type: VALID_SCORE,
     corridorId,
     idTeam1,
     idTeam2,
-    roundid
+    roundid,
+    corridor
   });
 
   export const showFirstRound = () => ({

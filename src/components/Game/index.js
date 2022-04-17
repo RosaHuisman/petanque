@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
 import Round from './Round';
 
 
@@ -42,8 +43,11 @@ const Game = ({
     showThirdRound()
   }
 
+  let history = useHistory();
+
   const handleEndGame = () => {
     endGame();
+    history.push("/resultats");
   }
   return (
     <div className="game">
@@ -52,7 +56,16 @@ const Game = ({
     <button onClick={handleShowSecondRound}> Tour 2 </button>
     <button onClick={handleShowThirdRound}> Tour 3 </button>
 
-    <button onClick={handleEndGame}> Tout est OK </button>
+    {/* <button onClick={handleEndGame}> Tout est OK </button> */}
+
+    <button
+      type="button"
+      className=""
+      onClick={handleEndGame}
+      Redirect="/resultats"
+    >
+      C'est bon, résultats
+    </button>
 
     {round1Open ? (
       <div>

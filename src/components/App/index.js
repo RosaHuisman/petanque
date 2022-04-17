@@ -7,6 +7,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../../containers/Home'
 import NewGame from '../../containers/NewGame'
 import Game from '../../containers/Game'
+import Results from '../../containers/Results'
 
 
 function App({ 
@@ -37,6 +38,13 @@ function App({
             <Route path="/jeu">
               {isLogged ? (
                 <Game />
+              ) : (
+              null
+              )}
+            </Route>
+            <Route path="/resultats">
+              {isLogged ? (
+                <Results />
               ) : (
               null
               )}

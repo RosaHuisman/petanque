@@ -1,5 +1,7 @@
 import { makeTour } from '../selectors/makeTour';
 import { enterScores } from '../selectors/enterScores';
+import { validScores } from '../selectors/validScores';
+import { endGame } from '../selectors/endGame';
 
 
 import {
@@ -60,7 +62,6 @@ import {
               ...state,
               round1: enterScores(state.round1, action.player1, action.player2, action.value, action.roundid),
               [action.name]: action.value,
-              players: state.players,
               }
           } else if (Number(action.roundid) === 2) {
             return {
@@ -82,16 +83,19 @@ import {
           return {
             ...state,
             corridorIds1: [...state.corridorIds1, action.corridorId],
+            round1: validScores(state.round1, action.corridor, action.roundid),
           }
         } else if (Number(action.roundid) === 2) {
           return {
             ...state,
             corridorIds2: [...state.corridorIds2, action.corridorId],
+            round2: validScores(state.round2, action.corridor, action.roundid),
           }
         } else if (Number(action.roundid) === 3) {
           return {
             ...state,
             corridorIds3: [...state.corridorIds3, action.corridorId],
+            round3: validScores(state.round3, action.corridor, action.roundid),
           }
         }
 
@@ -146,7 +150,7 @@ import {
       case END_GAME: {
         return {
           ...state,
-          //test: validPlayersScore(state.players, state.round1, state.round2, state.round3),
+          test: endGame(state.players, state.round1, state.round2, state.round3),
         }
       }
       

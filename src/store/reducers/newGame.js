@@ -43,6 +43,10 @@ import {
             {
               id: (Math.max(...ids) +1),
               name: state.player,
+              winRounds: [],
+              pointsRound1: 0,
+              pointsRound2: 0,
+              pointsRound3: 0,
             },
             ...state.players,
           ],

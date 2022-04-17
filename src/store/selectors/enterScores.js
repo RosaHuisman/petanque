@@ -1,5 +1,4 @@
 export const enterScores = (round, player1, player2, value, roundId) => {
-    console.log(roundId)
     round.map((corridor) => {
         corridor.team1.players.map((player) => {
             if (player === player1) {

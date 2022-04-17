@@ -18,8 +18,8 @@ const Round = ({
     makeRound(roundid);
   }
 
-  const handleValidScore = (corridorId, idTeam1, idTeam2, roundid) => {
-    validScore(corridorId, idTeam1, idTeam2, roundid);
+  const handleValidScore = (corridorId, idTeam1, idTeam2, roundid, corridor) => {
+    validScore(corridorId, idTeam1, idTeam2, roundid, corridor);
   }
 
   const handleEditScore = (corridorId, roundid) => {
@@ -167,7 +167,7 @@ const Round = ({
             <button
               type="submit"
               className="login-form-button"
-              onClick={() => {handleValidScore(corridor.id, corridor.team1.id, corridor.team2.id, roundid)}}
+              onClick={() => {handleValidScore(corridor.id, corridor.team1.id, corridor.team2.id, roundid, corridor)}}
             >
               OK
             </button>
