@@ -15,16 +15,13 @@ const FieldScore = ({
   roundid,
   player1,
   player2,
-  valueRound1,
-  valueRound2,
-  valueRound3,
+  player3,
   value
 }) => {
   const handleChange = (evt) => {
-    onChange(evt.target.value, name, player1, player2, roundid);
+    onChange(evt.target.value, name, player1, player2, player3, roundid);
   };
 
-  //console.log(value)
   return (
     
       <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
@@ -43,6 +40,7 @@ const FieldScore = ({
         teamid={teamid}
         player1={player1}
         player2={player2}
+        player3={player3}
 
       />
 

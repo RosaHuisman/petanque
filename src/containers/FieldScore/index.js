@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 
-  onChange: (value, empty, player1, player2, roundid) => {
-    dispatch(changeValueScore(ownProps.name, value, player1, player2, roundid));
+  onChange: (value, empty, player1, player2, player3, roundid) => {
+    dispatch(changeValueScore(ownProps.name, value, player1, player2, player3, roundid));
 
   },
 

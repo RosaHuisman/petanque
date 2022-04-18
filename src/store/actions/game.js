@@ -9,21 +9,23 @@ export const SHOW_THIRD_ROUND = 'SHOW_THIRD_ROUND';
 export const EDIT_SCORE = 'EDIT_SCORE';
 export const END_GAME = 'END_GAME';
 
-export const changeValue = (name, value, player1, player2, roundid) => ({
+export const changeValue = (name, value, player1, player2, player3, roundid) => ({
   type: CHANGE_VALUE,
   value,
   name,
   player1,
   player2,
+  player3,
   roundid,
 });
 
-export const changeValueScore = (name, value, player1, player2, roundid) => ({
+export const changeValueScore = (name, value, player1, player2, player3, roundid) => ({
   type: CHANGE_VALUE_SCORE,
   value,
   name,
   player1,
   player2,
+  player3,
   roundid,
 });
 

@@ -64,19 +64,19 @@ import {
           if (Number(action.roundid) === 1) {
             return {
               ...state,
-              round1: enterScores(state.round1, action.player1, action.player2, action.value, action.roundid),
+              round1: enterScores(state.round1, action.player1, action.player2, action.player3, action.value, action.roundid),
               [action.name]: action.value,
               }
           } else if (Number(action.roundid) === 2) {
             return {
               ...state,
-              round2: enterScores(state.round2, action.player1, action.player2, action.value, action.roundid),
+              round2: enterScores(state.round2, action.player1, action.player2, action.player3, action.value, action.roundid),
               [action.name]: action.value,
               }
           } else if (Number(action.roundid) === 3) {
             return {
               ...state,
-              round3: enterScores(state.round3, action.player1, action.player2, action.value, action.roundid),
+              round3: enterScores(state.round3, action.player1, action.player2, action.player3, action.value, action.roundid),
               [action.name]: action.value,
               }
             }

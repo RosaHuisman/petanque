@@ -143,6 +143,7 @@ const Round = ({
               teamid={corridor.team1.id}
               player1={corridor.team1.players[0]}
               player2={corridor.team1.players[1]}
+              player3={corridor.team1.players[2]}
 
             />
           </td> 
@@ -160,6 +161,7 @@ const Round = ({
               teamid={corridor.team2.id}
               player1={corridor.team2.players[0]}
               player2={corridor.team2.players[1]}
+              player3={corridor.team2.players[2]}
             /> 
           </td>
 
