@@ -1,7 +1,7 @@
 import { makeTour } from '../selectors/makeTour';
 import { enterScores } from '../selectors/enterScores';
 import { validScores } from '../selectors/validScores';
-import { endGame } from '../selectors/endGame';
+import { winAllRounds, winTwoRounds, winOneRound, winNoRound } from '../selectors/endGame';
 
 
 import {
@@ -28,6 +28,10 @@ import {
     corridorIds1: [0],
     corridorIds2: [0],
     corridorIds3: [0],
+    winAllRounds: [],
+    winTwoRounds: [],
+    winOneRound: [],
+    winNoRound: [],
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -150,7 +154,11 @@ import {
       case END_GAME: {
         return {
           ...state,
-          test: endGame(state.players, state.round1, state.round2, state.round3),
+          //players: endGame(state.players),
+          winAllRounds: winAllRounds(state.players),
+          winTwoRounds: winTwoRounds(state.players),
+          winOneRound: winOneRound(state.players),
+          winNoRound: winNoRound(state.players),
         }
       }
       

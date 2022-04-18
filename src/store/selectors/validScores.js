@@ -14,18 +14,18 @@ export const validScores = (round, corridor, roundId) => {
         // winRound true or false
         if (Number(corridor.team1.players[0].scoreRound1) > Number(corridor.team2.players[0].scoreRound1)) {
             corridor.team1.players.map((player) => {
-                player.winRounds[0] = true;
+                player.winRounds[0] = 2;
             })
             corridor.team2.players.map((player) => {
-                player.winRounds[0] = false;
+                player.winRounds[0] = 0;
             })
         } 
         if (Number(corridor.team1.players[0].scoreRound1) < Number(corridor.team2.players[0].scoreRound1)) {
             corridor.team2.players.map((player) => {
-                player.winRounds[0] = true;
+                player.winRounds[0] = 2;
             })
             corridor.team1.players.map((player) => {
-                player.winRounds[0] = false;
+                player.winRounds[0] = 0;
             })
         }
 
@@ -42,18 +42,18 @@ export const validScores = (round, corridor, roundId) => {
         // winRound true or false
         if (Number(corridor.team1.players[0].scoreRound2) > Number(corridor.team2.players[0].scoreRound2)) {
             corridor.team1.players.map((player) => {
-                player.winRounds[1] = true;
+                player.winRounds[1] = 2;
             })
             corridor.team2.players.map((player) => {
-                player.winRounds[1] = false;
+                player.winRounds[1] = 0;
             })
         } 
         if (Number(corridor.team1.players[0].scoreRound2) < Number(corridor.team2.players[0].scoreRound2)) {
             corridor.team2.players.map((player) => {
-                player.winRounds[1] = true;
+                player.winRounds[1] = 2;
             })
             corridor.team1.players.map((player) => {
-                player.winRounds[1] = false;
+                player.winRounds[1] = 0;
             })
         }
     } else if (Number(roundId) === 3) { 
@@ -69,18 +69,18 @@ export const validScores = (round, corridor, roundId) => {
         // winRound true or false
         if (Number(corridor.team1.players[0].scoreRound3) > Number(corridor.team2.players[0].scoreRound3)) {
             corridor.team1.players.map((player) => {
-                player.winRounds[2] = true;
+                player.winRounds[2] = 2;
             })
             corridor.team2.players.map((player) => {
-                player.winRounds[2] = false;
+                player.winRounds[2] = 0;
             })
         } 
         if (Number(corridor.team1.players[0].scoreRound3) < Number(corridor.team2.players[0].scoreRound3)) {
             corridor.team2.players.map((player) => {
-                player.winRounds[2] = true;
+                player.winRounds[2] = 2;
             })
             corridor.team1.players.map((player) => {
-                player.winRounds[2] = false;
+                player.winRounds[2] = 0;
             })
         }
     }

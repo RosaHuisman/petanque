@@ -103,8 +103,8 @@ const Round = ({
           <td> </td>
           { Number(roundid) === 1 ? (
             <>
-              <td>{corridor.team1.players[0].scoreRound1} {corridor.team1.players[1].scoreRound1}</td>    
-              <td> {corridor.team2.players[0].scoreRound1} {corridor.team2.players[1].scoreRound1} </td>
+              <td>{corridor.team1.players[0].scoreRound1} </td>    
+              <td> {corridor.team2.players[0].scoreRound1} </td>
             </>
           ) : Number(roundid) === 2 ? (
             <>

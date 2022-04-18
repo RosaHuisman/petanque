@@ -4,6 +4,10 @@ import Results from '../../components/Results';
 
 const mapStateToProps = (state, ownProps) => ({
  players: state.game.players,
+ winAllRounds: state.game.winAllRounds,
+ winTwoRounds: state.game.winTwoRounds,
+ winOneRound: state.game.winOneRound,
+ winNoRound: state.game.winNoRound,
 
 });
 
