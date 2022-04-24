@@ -8,7 +8,6 @@ import Home from '../../containers/Home'
 import NewGame from '../../containers/NewGame'
 import Game from '../../containers/Game'
 import Results from '../../containers/Results'
-import MyDocument from '../../components/MyDocument'
 
 
 function App({ 
@@ -46,13 +45,6 @@ function App({
             <Route path="/resultats">
               {isLogged ? (
                 <Results />
-              ) : (
-              null
-              )}
-            </Route>
-            <Route path="/test">
-              {isLogged ? (
-                <MyDocument />
               ) : (
               null
               )}

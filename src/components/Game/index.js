@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import Round from './Round';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+
 
 
 import './style.scss';
@@ -25,7 +27,6 @@ const Game = ({
   corridorIds3,
   scoreIsEntered,
   editScore,
-  roundid,
   endGame,
 
 }) => {
@@ -49,14 +50,13 @@ const Game = ({
     endGame();
     history.push("/resultats");
   }
+
   return (
     <div className="game">
     
     <button onClick={handleShowFirstRound}> Tour 1 </button>
     <button onClick={handleShowSecondRound}> Tour 2 </button>
     <button onClick={handleShowThirdRound}> Tour 3 </button>
-
-    {/* <button onClick={handleEndGame}> Tout est OK </button> */}
 
     <button
       type="button"

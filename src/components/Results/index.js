@@ -1,5 +1,6 @@
 import React from "react";
 import './style.scss';
+import { useHistory } from 'react-router-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 const Results = ({
@@ -7,8 +8,16 @@ const Results = ({
   winTwoRounds,
   winOneRound,
   winNoRound,
-  
+  cleanState
 }) => {
+
+let history = useHistory();
+
+const handleFinish = () => {
+  console.log('finish');
+  cleanState();
+  history.push("/");
+}  
 
 // Create styles
 const styles = StyleSheet.create({
@@ -239,9 +248,19 @@ const MyDoc = () => {
         loading ? 'Loading document...' : 'Télécharger'
       }
     </PDFDownloadLink>
-      
-    </div>
 
+    <div>
+      <button
+        type="button"
+        className=""
+        onClick={handleFinish}
+        Redirect="/"
+      >
+      fin  
+      </button>
+    </div>
+    
+    </div>
   );
 
 };

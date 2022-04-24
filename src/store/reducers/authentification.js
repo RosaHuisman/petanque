@@ -1,25 +1,34 @@
 import {
     SAVE_USER,
     LOGOUT,
+    CHANGE_VALUE_LOGIN
   } from '../actions/authentification';
   
   export const initialState = {
-    email: 'rosahuisman@hotmail.fr',
-    password: 'rosa',
-    pseudo: 'Rosa',
+    email: '',
+    password: '',
+    firstName: '',
+    id: null,
     logged: false,
   };
   
   const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
-  
-      case SAVE_USER: {
-        const { pseudo, logged } = action.payload;
+
+      case CHANGE_VALUE_LOGIN:
         return {
           ...state,
-          pseudo,
+          [action.key]: action.value,
+        };
+  
+      case SAVE_USER: {
+        const { email, firstName, logged, id } = action.payload;
+        return {
+          ...state,
+          firstName,
           logged,
-          email: '',
+          email,
+          id,
           password: '',
         };
       }

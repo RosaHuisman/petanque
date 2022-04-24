@@ -8,6 +8,8 @@ export const SHOW_SECOND_ROUND = 'SHOW_SECOND_ROUND';
 export const SHOW_THIRD_ROUND = 'SHOW_THIRD_ROUND';
 export const EDIT_SCORE = 'EDIT_SCORE';
 export const END_GAME = 'END_GAME';
+export const SAVE_GAME_IN_DB = 'SAVE_GAME_IN_DB';
+export const CLEAN_STATE = 'CLEAN_STATE';
 
 export const changeValue = (name, value, player1, player2, player3, roundid) => ({
   type: CHANGE_VALUE,
@@ -69,4 +71,12 @@ export const makeGame = (players) => ({
 
   export const endGame = () => ({
     type: END_GAME,
+  });
+
+  export const saveGameInDB = () => ({
+    type: SAVE_GAME_IN_DB,
+  });
+
+  export const cleanState = () => ({
+    type: 'CLEAN_STATE',
   });

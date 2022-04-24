@@ -1,7 +1,8 @@
 import { LOGIN, saveUser, CHECK_TOKEN } from './actions/authentification';
+import { SAVE_GAME_IN_DB } from './actions/game';
 import api from './utils/api';
 
-const auth = (store) => (next) => (action) => {
+const middleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const state = store.getState();
@@ -14,6 +15,7 @@ const auth = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          console.log('response', response);
           localStorage.setItem('token', response.data.token);
           api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
           const actionSaveUser = saveUser(response.data);
@@ -41,9 +43,35 @@ const auth = (store) => (next) => (action) => {
       }
       break;
     }
+    case SAVE_GAME_IN_DB: {
+      const state = store.getState();
+        api({
+          method: 'POST',
+          url:'/game', 
+          data: {
+            game: {
+              //date of 'now'
+              date: new Date(),
+              file_id: 2,
+              organisator_id: state.auth.id,
+            },
+            players: state.game.players,
+            
+          }
+        })
+          .then((response) => {
+            console.log('response', response);
+            const payload = { ...response.data };
+          })
+          .catch((error) => console.log(error));
+      
+      break;
+    }
+     
+
     default:
       next(action);
   }
 };
 
-export default auth;
+export default middleware;

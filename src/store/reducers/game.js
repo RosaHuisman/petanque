@@ -14,7 +14,8 @@ import {
     SHOW_SECOND_ROUND,
     SHOW_THIRD_ROUND,
     EDIT_SCORE,
-    END_GAME
+    END_GAME,
+    CLEAN_STATE,
   } from '../actions/game';
   
   export const initialState = {
@@ -154,11 +155,16 @@ import {
       case END_GAME: {
         return {
           ...state,
-          //players: endGame(state.players),
           winAllRounds: winAllRounds(state.players),
           winTwoRounds: winTwoRounds(state.players),
           winOneRound: winOneRound(state.players),
           winNoRound: winNoRound(state.players),
+        }
+      }
+
+      case CLEAN_STATE: {
+        return {
+          ...initialState
         }
       }
       
