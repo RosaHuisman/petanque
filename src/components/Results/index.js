@@ -17,7 +17,9 @@ const handleFinish = () => {
   console.log('finish');
   cleanState();
   history.push("/");
-}  
+} 
+
+const fileName = `Results ${new Date().toDateString()}.pdf`;
 
 // Create styles
 const styles = StyleSheet.create({
@@ -243,7 +245,7 @@ const MyDoc = () => {
         </tbody>
       </table>
 
-      <PDFDownloadLink document={<MyDoc />} fileName="somename.pdf">
+      <PDFDownloadLink document={<MyDoc />} fileName={fileName}>
       {({ blob, url, loading, error }) => 
         loading ? 'Loading document...' : 'Télécharger'
       }

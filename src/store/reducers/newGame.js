@@ -82,7 +82,7 @@ import {
       case EDIT_PLAYER: {
         return {
           ...state,
-          players: state.players.map(player => Number(player.id) === Number(action.playerId) ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score)} : player),
+          players: state.players.map(player => Number(player.id) === Number(action.playerId) ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score), winRounds: [], pointsRound1: 0, pointsRound2: 0, pointsRound3: 0} : player),
           editPlayer: '',
           showEditPlayerForm: !state.showEditPlayerForm,
         }
