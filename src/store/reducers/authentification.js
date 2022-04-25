@@ -34,8 +34,8 @@ import {
       }
       case LOGOUT: {
         return {
-          ...initialState,
-        };
+          ...initialState
+        }
       }
       
       default:

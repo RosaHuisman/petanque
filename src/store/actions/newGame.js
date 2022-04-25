@@ -6,6 +6,7 @@ export const DELETE_PLAYER = 'DELETE_PLAYER';
 export const EDIT_FORM = 'EDIT_FORM';
 export const EDIT_PLAYER = 'EDIT_PLAYER';
 export const CLEAR_STATE = 'CLEAR_STATE';
+export const LOGOUT = 'LOGOUT';
 
 export const setGameDate = () => ({
   type: SET_GAME_DATE,
@@ -44,4 +45,8 @@ export const editPlayer = (playerId) => ({
 export const clearNewGameState = () => ({
   type: CLEAR_STATE,
   
+});
+
+export const logout = () => ({
+  type: LOGOUT,
 });

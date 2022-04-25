@@ -7,6 +7,7 @@ import {
     EDIT_FORM,
     EDIT_PLAYER,
     CLEAR_STATE,
+    LOGOUT
   } from '../actions/newGame';
   
   export const initialState = {
@@ -94,7 +95,13 @@ import {
           players: [],
           player: '',
         }
-      }        
+      } 
+      
+      case LOGOUT: {
+        return {
+          ...initialState
+        }
+      }
       
       
       default:

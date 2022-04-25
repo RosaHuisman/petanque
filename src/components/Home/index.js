@@ -5,17 +5,28 @@ import LoginForm from '../../containers/LoginForm';
 
 
 const Home = (
-  isLogged,
+  logged,
   ) => {
   return (
     <div className="home">
       <LoginForm />
       
-      {isLogged ? 
-        <Link to="/nouvellepartie">
-          nouvelle partie
-        </Link>
-         : null
+      {logged.logged ? (
+        <div className='home-links'>
+          <Link 
+            to="/nouvellepartie"
+            className="home-links-button"
+            >
+            Nouvelle partie
+          </Link>
+          <Link 
+            to="/historique"
+            className='home-links-button'
+            >
+            Historique
+          </Link>
+        </div>
+        ) : null
       }
 
     </div>

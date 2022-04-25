@@ -6,8 +6,6 @@ import Field from '../../containers/Field';
 import './style.scss';
 
 const LoginForm = ({
-  email,
-  password,
   changeField,
   handleLogin,
   handleLogout,
@@ -20,54 +18,56 @@ const LoginForm = ({
   };
 
   return (
-    <div className="login-form">
+    <>
       {isLogged && (
-        <div className="login-form-logged">
-          <p className="login-form-message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login-form-button"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
+        <div className="logged">
+            <p className="logged-message">
+              {loggedMessage}
+            </p>
+            <button
+              type="button"
+              className="logged-button"
+              onClick={handleLogout}
+            >
+              Déconnexion
+            </button>
         </div>
       )}
+      
+      
       {!isLogged && (
-
-        <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            placeholder="Adresse Email"
-            onChange={changeField}
-            value={email}
-          />
-          
-          <Field
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            onChange={changeField}
-            value={password}
-          />
-          <button
-            type="submit"
-            className="login-form-button"
-          >
-            OK
-          </button>
-        </form>
+        <div className="login-form">
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <Field
+              name="email"
+              placeholder="Adresse Email"
+              onChange={changeField}
+              className="login-form-element"
+            />
+            
+            <Field
+              name="password"
+              type="password"
+              placeholder="Mot de passe"
+              onChange={changeField}
+              className="login-form-element"
+            />
+            <button
+              type="submit"
+              className="login-form-button"
+              
+            >
+              Connexion
+            </button>
+          </form>
+        </div>
       )}
-    </div>
+          
+    </>
   );
 };
 
 LoginForm.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  //changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,

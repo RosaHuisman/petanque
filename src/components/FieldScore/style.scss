@@ -8,15 +8,15 @@
     width: 100%;
     padding: .7em;
     font-size: 1em;
-    border: 1px solid #ddd;
+    border: 1px solid vars.$secondaryColor;
     border-radius: .3em;
     height: 2.5em;
 
     &:focus {
-      border-color: vars.$color;
+      border-color: vars.$primaryColor;
 
       & + .field-label {
-        color: vars.$color;
+        color: vars.$primaryColor;
       }
     }
   }
