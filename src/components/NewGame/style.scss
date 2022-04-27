@@ -1,0 +1,46 @@
+@use 'src/styles/vars';
+
+.newgame {
+    
+    &-form {
+        display: flex;
+        justify-content: center;
+
+        &-button {
+            font-size: 1.2em;
+            color: white;
+            background-color: vars.$primaryColor;
+            border-radius: .3em;
+            border: 0;
+            padding: 1em;
+            margin-top: 1em;      
+        }
+    }
+
+    &-list {
+        margin-top: 2em;
+        text-align: center;
+
+        &-total {
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        &-player {
+            margin-bottom: 1em;
+
+            &-name {
+                font-size: 1.2em;
+                margin-right: 1em;
+                font-weight: bold;
+            }
+
+            &-button {
+                font-size: .7em;
+                border-radius: .3em;
+                border: 0;
+                margin-right: .5em;
+            }
+        }
+    }
+}

@@ -6,8 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import './style.scss';
 
 
-
-
 const NewGame = ({
   changeField,
   player,
@@ -58,28 +56,30 @@ const NewGame = ({
 
   return (
     <div className="newgame">
-
-      <form autoComplete="off" className="" onSubmit={handleSubmit}>
+      <form autoComplete="off" className="newgame-form" onSubmit={handleSubmit}>
           <Field
             name="player"
             placeholder="Nom joueur"
             onChange={changeField}
             value={player}
+            className="newgame-form-input"
           />
 
           <button
             type="submit"
-            className="login-form-button"
+            className="newgame-form-button"
           >
             OK
           </button>
         </form>
 
-        {players.length}
+        { players.length > 0 ?
+        <div className="newgame-list">
+        <p className="newgame-list-total"> Nombre total de joueurs : <b>{players.length}</b></p>
         
-        <ul>
+        <div>
           {players.map((player)=>(
-              <li key={player.id}> {player.name} 
+              <div key={player.id} className="newgame-list-player"> <span className="newgame-list-player-name"> {player.name} </span>
                 
                 {(Number(playerId) === Number(player.id) && showDeletePlayerForm) ? (
                   <form 
@@ -88,7 +88,7 @@ const NewGame = ({
                     onSubmit={handleEditPlayer}
                     {...player}
                   >
-                    <p> Sûr ? </p>
+                    <span> Supprimer ? </span>
         
                 <button
                   type="button"
@@ -108,11 +108,10 @@ const NewGame = ({
                 ) : (
                   <button
                   type="button"
-                  className=""
+                  className="newgame-list-player-button bi bi-trash3"
                   {...player}
                   onClick={handleDeleteForm}
                 >
-                  supprimer
                 </button>
                 )}
 
@@ -147,20 +146,16 @@ const NewGame = ({
                 ) : (
                   <button
                   type="button"
-                  className=""
+                  className="newgame-list-player-button bi bi-pencil-fill"
                   {...player}
                   onClick={handleEdit}
                 >
-                  modifier
                 </button>
                 )}
-                
-                 
-              
-               </li>
+               </div>
             )
             )}
-        </ul>
+        </div>
         
                 <button
                   type="button"
@@ -170,7 +165,10 @@ const NewGame = ({
                 >
                   Tout est ok
                 </button>
-        
+        </div>
+        :
+        <p> Entre le nom des joueurs</p>
+        }
     </div>
 
   );

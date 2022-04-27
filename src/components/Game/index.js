@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import Round from './Round';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 
 

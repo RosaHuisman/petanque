@@ -1,7 +1,7 @@
 import React from "react";
 import './style.scss';
 import { useHistory } from 'react-router-dom';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+//import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 const Results = ({
   winAllRounds,
@@ -22,7 +22,7 @@ const handleFinish = () => {
 const fileName = `Results ${new Date().toDateString()}.pdf`;
 
 // Create styles
-const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
     backgroundColor: '#E4E4E4'
@@ -53,14 +53,13 @@ const styles = StyleSheet.create({
     marginBottom: 5, 
     fontSize: 10,
   }
-});
+}); */
 
   // Document to download : 
-const MyDoc = () => {
+/* const MyDoc = () => {
   return (
   <Document>
     <Page size="A4" orientation="landscape" style={styles.page}>
-      {/* TableHeader */}
       <View style={styles.table}>
         <View style={styles.tableRow}> 
           <View style={styles.tableCol}> 
@@ -82,7 +81,6 @@ const MyDoc = () => {
             <Text style={styles.tableCell}>Score final</Text> 
           </View> 
         </View>
-        {/* TableContent */}
         {winAllRounds.map((player) => (
             <View style={styles.tableRow}>
               <View style={styles.tableCol}>  
@@ -181,7 +179,7 @@ const MyDoc = () => {
     </Page>
   </Document>
 )
-      };
+      }; */
 
   return (
     <div className="results">
@@ -245,11 +243,11 @@ const MyDoc = () => {
         </tbody>
       </table>
 
-      <PDFDownloadLink document={<MyDoc />} fileName={fileName}>
+      {/* <PDFDownloadLink document={<MyDoc />} fileName={fileName}>
       {({ blob, url, loading, error }) => 
         loading ? 'Loading document...' : 'Télécharger'
       }
-    </PDFDownloadLink>
+    </PDFDownloadLink> */}
 
     <div>
       <button

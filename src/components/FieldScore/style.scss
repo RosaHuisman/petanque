@@ -1,6 +1,6 @@
 @use '../../styles/vars';
 
-.field {
+.field-score {
   margin: .3em .3em .3em 0;
   position: relative;
 
@@ -15,7 +15,7 @@
     &:focus {
       border-color: vars.$primaryColor;
 
-      & + .field-label {
+      & + .field-score-label {
         color: vars.$primaryColor;
       }
     }
@@ -33,10 +33,10 @@
   }
 
   &--has-content {
-    .field-label {
+    .field-score-label {
       display: block;
     }
-    .field-input {
+    .field-score-input {
       padding: 1.4em .7em .4em;
     }
   }

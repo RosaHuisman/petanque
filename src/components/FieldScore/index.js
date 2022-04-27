@@ -24,13 +24,13 @@ const FieldScore = ({
 
   return (
     
-      <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
+      <div className={value.length > 0 ? 'field-score field-score--has-content' : 'field-score'}>
        
       <input
         value={value}
         onChange={handleChange}
         type={type}
-        className="field-input"
+        className="field-score-input"
         placeholder={placeholder}
         name={name}
         min={min}
@@ -46,7 +46,7 @@ const FieldScore = ({
 
       <label
         htmlFor={teamid}
-        className="field-label"
+        className="field-score-label"
       >
         {placeholder}
       </label>
