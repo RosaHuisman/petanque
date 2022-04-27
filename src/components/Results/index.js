@@ -19,7 +19,7 @@ const handleFinish = () => {
   history.push("/");
 } 
 
-const fileName = `Results ${new Date().toDateString()}.pdf`;
+//const fileName = `Results ${new Date().toDateString()}.pdf`;
 
 // Create styles
 /* const styles = StyleSheet.create({
@@ -181,6 +181,7 @@ const fileName = `Results ${new Date().toDateString()}.pdf`;
 )
       }; */
 
+  console.log(winAllRounds)
   return (
     <div className="results">
       <p> Les résultats </p>

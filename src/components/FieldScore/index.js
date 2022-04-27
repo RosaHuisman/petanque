@@ -16,7 +16,8 @@ const FieldScore = ({
   player1,
   player2,
   player3,
-  value
+  value,
+  className,
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name, player1, player2, player3, roundid);
@@ -30,7 +31,7 @@ const FieldScore = ({
         value={value}
         onChange={handleChange}
         type={type}
-        className="field-score-input"
+        className={className? className : 'field-score'}
         placeholder={placeholder}
         name={name}
         min={min}
@@ -44,12 +45,12 @@ const FieldScore = ({
 
       />
 
-      <label
+     {/*  <label
         htmlFor={teamid}
         className="field-score-label"
       >
         {placeholder}
-      </label>
+      </label> */}
       
     </div>
    

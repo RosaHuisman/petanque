@@ -1,3 +1,35 @@
+@use '../../../styles/vars';
+
+.round {
+    margin-top: vars.$gutter;
+    text-align: center;
+    &-button {
+        font-size: .8em;
+        border-radius: .3em;
+        border: 0;
+        padding: 1em;
+        margin-right: .5em; 
+    }
+
+    &-table {
+        &-score {
+            &-input {
+                width: 5em;
+                text-align: center;
+            }
+
+            &-button {
+                text-align: center;
+                border-radius: .3em;
+                border: 0;
+                padding: .5em;
+                background-color: vars.$primaryColor;
+            }
+
+        }
+    }
+}
+
 .game_table_player::after {
     content: " & ";
 }

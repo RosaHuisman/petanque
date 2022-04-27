@@ -38,11 +38,12 @@ const LoginForm = ({
       {!isLogged && (
         <div className="login-form">
           <form autoComplete="off" onSubmit={handleSubmit}>
+            
             <Field
               name="email"
               placeholder="Adresse Email"
               onChange={changeField}
-              className="login-form-element"
+              className="login-form-input"
             />
             
             <Field
@@ -50,7 +51,7 @@ const LoginForm = ({
               type="password"
               placeholder="Mot de passe"
               onChange={changeField}
-              className="login-form-element"
+              className="login-form-input"
             />
             <button
               type="submit"

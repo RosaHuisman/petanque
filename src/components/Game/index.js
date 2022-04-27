@@ -2,8 +2,6 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import Round from './Round';
 
-
-
 import './style.scss';
 
 const Game = ({
@@ -52,19 +50,24 @@ const Game = ({
 
   return (
     <div className="game">
-    
-    <button onClick={handleShowFirstRound}> Tour 1 </button>
-    <button onClick={handleShowSecondRound}> Tour 2 </button>
-    <button onClick={handleShowThirdRound}> Tour 3 </button>
 
-    <button
-      type="button"
-      className=""
-      onClick={handleEndGame}
-      Redirect="/resultats"
-    >
-      C'est bon, résultats
-    </button>
+      <div className="game-header">
+        <div className="game-header-round-buttons">
+          <button className="game-header-round-button" onClick={handleShowFirstRound}> Tour 1 </button>
+          <button className="game-header-round-button" onClick={handleShowSecondRound}> Tour 2 </button>
+          <button className="game-header-round-button" onClick={handleShowThirdRound}> Tour 3 </button>
+        </div>
+        <button
+          type="button"
+          className="game-header-result-button"
+          onClick={handleEndGame}
+          Redirect="/resultats"
+        >
+          C'est bon, résultats
+        </button>
+      </div>
+
+      
 
     {round1Open ? (
       <div>

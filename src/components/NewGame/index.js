@@ -92,14 +92,14 @@ const NewGame = ({
         
                 <button
                   type="button"
-                  className=""
+                  className="newgame-list-player-edit-button"
                   onClick={() => handleDelete(player.id)}
                 >
                   Oui
                 </button>
                   <button
                     type="button"
-                    className=""
+                    className="newgame-list-player-edit-button"
                     onClick={handleDelete}
                   >
                     Non
@@ -118,7 +118,7 @@ const NewGame = ({
                   {(Number(playerId) === Number(player.id) && showEditPlayerForm) ? (
                   <form 
                     autoComplete="off" 
-                    className="" 
+                    className="newgame-list-player-edit" 
                     onSubmit={handleEditPlayer}
                     {...player}
                   >
@@ -127,17 +127,18 @@ const NewGame = ({
                     placeholder="Nouveau nom joueur"
                     onChange={changeField}
                     value={player}
+                    className="newgame-list-player-edit-input"
                   />
         
                   <button
                     type="submit"
-                    className=""
+                    className="newgame-list-player-edit-button"
                   >
                     OK
                   </button>
                   <button
                     type="button"
-                    className=""
+                    className="newgame-list-player-edit-button"
                     onClick={handleEdit}
                   >
                     Annuler
@@ -159,7 +160,7 @@ const NewGame = ({
         
                 <button
                   type="button"
-                  className=""
+                  className="newgame-list-player-edit-button"
                   onClick={handleMakeGame}
                   Redirect="/jeu"
                 >

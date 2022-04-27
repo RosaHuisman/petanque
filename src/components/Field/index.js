@@ -10,7 +10,8 @@ const Field = ({
   placeholder,
   onChange,
   min,
-  max
+  max,
+  className
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
@@ -25,19 +26,19 @@ const Field = ({
         onChange={handleChange}
         id={inputId}
         type={type}
-        className="field-input"
+        className={className? className : 'field-input'}
         placeholder={placeholder}
         name={name}
         min={min}
         max={max}
       />
 
-      <label
+      {/* <label
         htmlFor={inputId}
-        className="field-label"
+        className={className? className : 'field-label'}
       >
         {placeholder}
-      </label>
+      </label> */}
     </div>
   );
 };

@@ -6,6 +6,25 @@
         display: flex;
         justify-content: center;
 
+        &-input {
+            width: 100%;
+            padding: .7em;
+            font-size: 1.2em;
+            border: 1px solid #ddd;
+            border-radius: .3em;
+            height: 3.5em;
+            margin-top: 1em;
+        
+            &:focus {
+              border-color: vars.$primaryColor;
+        
+              & + .field-label {
+                color: vars.$primaryColor;
+              }
+            }
+            
+        }
+
         &-button {
             font-size: 1.2em;
             color: white;
@@ -41,6 +60,30 @@
                 border: 0;
                 margin-right: .5em;
             }
+
+            &-edit {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &-input {
+                    //display: none;
+                    height: 2.5em;
+                    width: 100%;
+                    max-width: 400px;
+                    //margin-left: 13em;
+    
+                }
+                &-button {
+                    font-size: .9em;
+                    color: white;
+                    background-color: vars.$primaryColor;
+                    border-radius: .3em;
+                    border: 0;
+                    padding: .6em;
+                    margin-left: .5em;
+                }
+            }
+            
         }
     }
 }

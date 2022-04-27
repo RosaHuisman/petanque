@@ -1,5 +1,6 @@
 import React from "react";
 import FieldScore from '../../../containers/FieldScore';
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 import './style.scss';
@@ -27,12 +28,12 @@ const Round = ({
   }
 
   return (
-    <div className="game">
+    <div className="round">
 
 {Number(roundid) === 1 && Number(round.length) === 0 ? (
   <button
       type="button"
-      className=""
+      className="round-button"
       onClick={handleMakeRound}
     >
       Créer tour
@@ -43,7 +44,7 @@ const Round = ({
 {Number(roundid) === 2 && Number(round.length) === 0 ? (
   <button
       type="button"
-      className=""
+      className="round-button"
       onClick={handleMakeRound}
     >
       Créer tour
@@ -54,7 +55,7 @@ const Round = ({
 {Number(roundid) === 3 && Number(round.length) === 0 ? (
   <button
       type="button"
-      className=""
+      className="round-button"
       onClick={handleMakeRound}
     >
       Créer tour
@@ -66,13 +67,11 @@ const Round = ({
         <tr>
           <td> Terrain</td> 
           <td> Joueurs</td> 
-          <td> contre </td> 
-          <td> joueurs </td>
+          <td> </td> 
+          <td> Joueurs </td>
           <td>  </td>
         </tr>
       </thead>
-      
-       
       
       { Number(round.length) !== 0 ? (
 
@@ -84,10 +83,11 @@ const Round = ({
           <td> 
             <div>
               {corridor.team1.players.map((player) => {
-                return <span key={player.id} className="game_table_player">{player.name}</span>
+                return <span key={player.id} className="game_table_player ">{player.name}</span>
               })} 
             </div>
           </td>
+          <td><i class="bi bi-arrow-left-right"></i></td>
           <td>
             <div>
               {corridor.team2.players.map((player) => {
@@ -103,24 +103,27 @@ const Round = ({
           <td> </td>
           { Number(roundid) === 1 ? (
             <>
-              <td>{corridor.team1.players[0].scoreRound1} </td>    
+              <td>{corridor.team1.players[0].scoreRound1} </td> 
+              <td></td>   
               <td> {corridor.team2.players[0].scoreRound1} </td>
             </>
           ) : Number(roundid) === 2 ? (
             <>
-              <td>{corridor.team1.players[0].scoreRound2} {corridor.team1.players[1].scoreRound2}</td>
-              <td> {corridor.team2.players[0].scoreRound2} {corridor.team2.players[1].scoreRound2} </td>
+              <td>{corridor.team1.players[0].scoreRound2}</td>
+              <td></td>
+              <td> {corridor.team2.players[0].scoreRound2} </td>
             </>
           ) : Number(roundid) === 3 ? (
             <>
-              <td>{corridor.team1.players[0].scoreRound3} {corridor.team1.players[1].scoreRound3}</td>
-              <td> {corridor.team2.players[0].scoreRound3} {corridor.team2.players[1].scoreRound3} </td>
+              <td>{corridor.team1.players[0].scoreRound3} </td>
+              <td></td>
+              <td> {corridor.team2.players[0].scoreRound3} </td>
             </>
           ) : null}
           
           <td> <button
               type="button"
-              className="login-form-button"
+              className="round-table-score-button"
               onClick={() => handleEditScore(corridor.id, roundid)}
             >
               Modifier
@@ -134,6 +137,7 @@ const Round = ({
             <FieldScore
               name={roundid+"-score-team-"+corridor.team1.id}
               placeholder="score"
+              className="round-table-score-input"
               type="number"
               min="0" 
               max="13"
@@ -147,11 +151,13 @@ const Round = ({
 
             />
           </td> 
+          <td></td>
           <td> 
              
             <FieldScore
               name={roundid+"-score-team-"+corridor.team2.id}
               placeholder="score"
+              className="round-table-score-input"
               type="number"
               min="0" 
               max="13"
@@ -168,7 +174,7 @@ const Round = ({
           <td>  
             <button
               type="submit"
-              className="login-form-button"
+              className="round-table-score-button"
               onClick={() => {handleValidScore(corridor.id, corridor.team1.id, corridor.team2.id, roundid, corridor)}}
             >
               OK
