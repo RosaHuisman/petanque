@@ -1,6 +1,5 @@
 import React from "react";
 import FieldScore from '../../../containers/FieldScore';
-import { Container, Row, Col } from 'react-bootstrap';
 
 
 import './style.scss';

@@ -28,6 +28,8 @@ export const enterScores = (round, player1, player2, player3, value, roundId) =>
                     player.scoreRound3 = value;
                 }
             }
+
+            return corridor;
         })
         corridor.team2.players.map((player) => {
             if (player === player1) {
@@ -58,7 +60,10 @@ export const enterScores = (round, player1, player2, player3, value, roundId) =>
                     player.scoreRound3 = value;
                 }
             }
+            return corridor;
         })
+        return round;
     })
     return round;
+
 }

@@ -1,4 +1,4 @@
-export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const CHANGE_VALUE_GAME = 'CHANGE_VALUE_GAME';
 export const CHANGE_VALUE_SCORE = 'CHANGE_VALUE_SCORE';
 export const MAKE_GAME = 'MAKE_GAME';
 export const MAKE_ROUND = 'MAKE_ROUND';
@@ -12,7 +12,7 @@ export const SAVE_GAME_IN_DB = 'SAVE_GAME_IN_DB';
 export const CLEAN_STATE = 'CLEAN_STATE';
 
 export const changeValue = (name, value, player1, player2, player3, roundid) => ({
-  type: CHANGE_VALUE,
+  type: CHANGE_VALUE_GAME,
   value,
   name,
   player1,

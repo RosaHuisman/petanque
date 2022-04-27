@@ -7,7 +7,7 @@ import { winAllRounds, winTwoRounds, winOneRound, winNoRound } from '../selector
 import {
     MAKE_GAME,
     MAKE_ROUND,
-    CHANGE_VALUE,
+    CHANGE_VALUE_GAME,
     CHANGE_VALUE_SCORE,
     VALID_SCORE,
     SHOW_FIRST_ROUND,
@@ -53,37 +53,37 @@ import {
         }
       }
 
-      case CHANGE_VALUE: {
+      case CHANGE_VALUE_GAME: {
+        return {
+          ...state,
+          [action.name]: action.value,
+        } 
+      }
+
+      case CHANGE_VALUE_SCORE: {
+        if (Number(action.roundid) === 1) {
           return {
             ...state,
+            round1: enterScores(state.round1, action.player1, action.player2, action.player3, action.value, action.roundid),
             [action.name]: action.value,
-          } 
-        };
-
-          case CHANGE_VALUE_SCORE: {
-          }
-          if (Number(action.roundid) === 1) {
-            return {
-              ...state,
-              round1: enterScores(state.round1, action.player1, action.player2, action.player3, action.value, action.roundid),
-              [action.name]: action.value,
-              }
-          } else if (Number(action.roundid) === 2) {
-            return {
-              ...state,
-              round2: enterScores(state.round2, action.player1, action.player2, action.player3, action.value, action.roundid),
-              [action.name]: action.value,
-              }
-          } else if (Number(action.roundid) === 3) {
-            return {
-              ...state,
-              round3: enterScores(state.round3, action.player1, action.player2, action.player3, action.value, action.roundid),
-              [action.name]: action.value,
-              }
             }
+        } else if (Number(action.roundid) === 2) {
+          return {
+            ...state,
+            round2: enterScores(state.round2, action.player1, action.player2, action.player3, action.value, action.roundid),
+            [action.name]: action.value,
+            }
+        } else if (Number(action.roundid) === 3) {
+          return {
+            ...state,
+            round3: enterScores(state.round3, action.player1, action.player2, action.player3, action.value, action.roundid),
+            [action.name]: action.value,
+            }
+          }
+          break;
+        }
       
       case VALID_SCORE: {
-        }
         if (Number(action.roundid) === 1) {
           return {
             ...state,
@@ -103,6 +103,8 @@ import {
             round3: validScores(state.round3, action.corridor, action.roundid),
           }
         }
+        break;
+      }
 
       case EDIT_SCORE: {
 
@@ -122,6 +124,7 @@ import {
             corridorIds3: state.corridorIds3.filter(id => id !== action.corridorId),
           }
         }
+        break;
       }
 
       case SHOW_FIRST_ROUND: {

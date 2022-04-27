@@ -22,5 +22,10 @@ const pReducer = persistReducer(persistConfig, rootReducer);
 let store = createStore(pReducer, enhancers);
   
 let persistor = persistStore(store);
+
+const exportedObject = {
+    store,
+    persistor,
+};
     
-export default { store, persistor };
+export default exportedObject;

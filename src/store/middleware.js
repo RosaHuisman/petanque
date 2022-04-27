@@ -62,6 +62,7 @@ const middleware = (store) => (next) => (action) => {
           .then((response) => {
             console.log('response', response);
             const payload = { ...response.data };
+            console.log('payload', payload);
           })
           .catch((error) => console.log(error));
       

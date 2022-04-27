@@ -23,7 +23,7 @@ const Home = (
             to="/historique"
             className='home-links-button'
             >
-            Historique
+            Historique (à venir)
           </Link>
         </div>
         ) : null
