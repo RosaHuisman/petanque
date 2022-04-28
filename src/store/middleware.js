@@ -22,7 +22,10 @@ const middleware = (store) => (next) => (action) => {
           const actionSaveUser = saveUser(response.data);
           store.dispatch(actionSaveUser);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            console.log('il y a une erreur, front')
+            console.log(error)
+          });
       break;
     }
     case CHECK_TOKEN: {
