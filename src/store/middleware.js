@@ -56,7 +56,6 @@ const middleware = (store) => (next) => (action) => {
             game: {
               //date of 'now'
               date: new Date(),
-              file_id: 2,
               organisator_id: state.auth.id,
             },
             players: state.game.players,

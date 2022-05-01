@@ -1,7 +1,7 @@
 import React from "react";
 import './style.scss';
 import { useHistory } from 'react-router-dom';
-//import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 const Results = ({
   winAllRounds,
@@ -14,15 +14,14 @@ const Results = ({
 let history = useHistory();
 
 const handleFinish = () => {
-  console.log('finish');
   cleanState();
   history.push("/");
 } 
 
-//const fileName = `Results ${new Date().toDateString()}.pdf`;
+const fileName = `Results ${new Date().toDateString()}.pdf`;
 
 // Create styles
-/* const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
     backgroundColor: '#E4E4E4'
@@ -53,10 +52,10 @@ const handleFinish = () => {
     marginBottom: 5, 
     fontSize: 10,
   }
-}); */
+}); 
 
   // Document to download : 
-/* const MyDoc = () => {
+const MyDoc = () => {
   return (
   <Document>
     <Page size="A4" orientation="landscape" style={styles.page}>
@@ -179,15 +178,14 @@ const handleFinish = () => {
     </Page>
   </Document>
 )
-      }; */
+      }; 
 
-  console.log(winAllRounds)
   return (
     <div className="results">
-      <p> Les résultats </p>
-      <table className="table">
-        <thead>
-          <tr>
+      <p className="results-title"> Les résultats </p>
+      <table className="results-table">
+        <thead className="results-table-head">
+          <tr className="results-table-head-row">
             <td> Classement </td>
             <td> Nom </td>
             <td> score partie 1 </td>
@@ -196,9 +194,9 @@ const handleFinish = () => {
             <td> score final </td>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="results-table-body">
         {winAllRounds.map((player) => (
-          <tr>
+          <tr className="results-table-body-player">
             <td> {winAllRounds.indexOf(player) + 1} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -208,8 +206,10 @@ const handleFinish = () => {
           </tr>
         
       ))}
+      </tbody>
+      <tbody className="results-table-body">
       {winTwoRounds.map((player) => (
-          <tr>
+          <tr className="results-table-body-player">
             <td> {winTwoRounds.indexOf(player) + 1 + winAllRounds.length} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -219,8 +219,10 @@ const handleFinish = () => {
           </tr>
         
       ))}
+      </tbody>
+      <tbody className="results-table-body">
       {winOneRound.map((player) => (
-          <tr>
+          <tr className="results-table-body-player">
             <td> {winOneRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -230,8 +232,10 @@ const handleFinish = () => {
           </tr>
         
       ))}
+      </tbody>
+      <tbody className="results-table-body">
       {winNoRound.map((player) => (
-          <tr>
+          <tr className="results-table-body-player">
             <td> {winNoRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length + winOneRound.length} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -244,16 +248,18 @@ const handleFinish = () => {
         </tbody>
       </table>
 
-      {/* <PDFDownloadLink document={<MyDoc />} fileName={fileName}>
+        <button className="results-button-dl" >
+      <PDFDownloadLink document={<MyDoc />} fileName={fileName} className="results-button-dl-link">
       {({ blob, url, loading, error }) => 
         loading ? 'Loading document...' : 'Télécharger'
       }
-    </PDFDownloadLink> */}
+    </PDFDownloadLink>
+    </button>
 
     <div>
       <button
         type="button"
-        className=""
+        className="results-button"
         onClick={handleFinish}
         Redirect="/"
       >
