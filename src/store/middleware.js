@@ -6,8 +6,8 @@ const middleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const state = store.getState();
-      console.log('state', store.getState);
-      console.log('api', api);
+      console.log('email', state.auth.email);
+      console.log('password', state.auth.password);
       api({
         method: 'POST',
         url: '/login',
@@ -24,7 +24,6 @@ const middleware = (store) => (next) => (action) => {
           store.dispatch(actionSaveUser);
         })
         .catch((error) => {
-            console.log('il y a une erreur, front')
             console.log(error)
           });
       break;

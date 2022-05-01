@@ -1,7 +1,8 @@
 import axios from 'axios';
+
 const api = axios.create({
-  //url: 'http://localhost:3001/',
-  url: 'https://petanqueback.herokuapp.com/',
+  //baseURL: 'http://localhost:3001/',
+  baseURL: 'https://petanqueback.herokuapp.com/',
   timeout: 2500,
 });
 
