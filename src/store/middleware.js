@@ -15,7 +15,6 @@ const middleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log('coucou')
           console.log('response', response);
           localStorage.setItem('token', response.data.token);
           api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
