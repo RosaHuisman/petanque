@@ -6,6 +6,8 @@ const middleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const state = store.getState();
+      console.log('state', store.getState);
+      console.log('api', api);
       api({
         method: 'POST',
         url: '/login',
