@@ -8,6 +8,7 @@ import Home from '../../containers/Home'
 import NewGame from '../../containers/NewGame'
 import Game from '../../containers/Game'
 import Results from '../../containers/Results'
+import History from '../../containers/History'
 
 
 function App({ 
@@ -45,6 +46,13 @@ function App({
             <Route path="/resultats">
               {isLogged ? (
                 <Results />
+              ) : (
+              null
+              )}
+            </Route>
+            <Route path="/historique">
+              {isLogged ? (
+                <History />
               ) : (
               null
               )}

@@ -11,6 +11,7 @@ export const END_GAME = 'END_GAME';
 export const SAVE_GAME_IN_DB = 'SAVE_GAME_IN_DB';
 export const CLEAN_STATE = 'CLEAN_STATE';
 
+
 export const changeValue = (name, value, player1, player2, player3, roundid) => ({
   type: CHANGE_VALUE_GAME,
   value,
@@ -78,5 +79,7 @@ export const makeGame = (players) => ({
   });
 
   export const cleanState = () => ({
-    type: 'CLEAN_STATE',
+    type: CLEAN_STATE,
   });
+
+  

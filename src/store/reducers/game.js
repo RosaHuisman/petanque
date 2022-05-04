@@ -16,8 +16,10 @@ import {
     EDIT_SCORE,
     END_GAME,
     CLEAN_STATE,
+
   } from '../actions/game';
   
+
   export const initialState = {
     players: [],
     round1: [],
@@ -33,6 +35,7 @@ import {
     winTwoRounds: [],
     winOneRound: [],
     winNoRound: [],
+
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -170,6 +173,8 @@ import {
           ...initialState
         }
       }
+
+      
       
       default:
         return state;

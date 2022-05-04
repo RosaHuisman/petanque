@@ -1,0 +1,82 @@
+@use '../../styles/vars';
+
+.history {
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+
+  &-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  &-content {
+    display: flex;
+    width: 100%;
+    
+    &-nav {
+      margin-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      width: auto;
+
+      &-item {
+        font-size: .8em;
+        color: white;
+        background-color: vars.$primaryColor;
+        border-radius: .3em;
+        border: 0;
+        padding: .5em;
+        margin: .5em;
+        text-decoration: none;
+      }
+      &-item:hover {
+        cursor: pointer;
+        background-color: vars.$secondaryColor;
+        color: vars.$primaryColor;
+      }
+    }
+
+    &-table {
+      width: auto;
+
+      &-head {
+          border-bottom: 3px solid vars.$primaryColor;
+          text-align: center;
+          font-weight: bold;
+      }
+      &-body {
+          text-align: center;
+
+          &-player {
+              border-bottom: 1px solid vars.$primaryColor;
+              height: 2em;
+          }
+
+          &-player:nth-child(1) {
+              height: 4em;
+              vertical-align: bottom;
+
+          }
+      }
+      
+    }
+  }
+
+  &-back {
+    margin-top: 3em;
+    padding: 1em 2em;
+    font-weight: bold;
+    background-color: vars.$secondaryColor;
+    border: none;
+    border-radius: 3px;
+    color: vars.$primaryColor;
+    text-decoration: none;
+  }
+  &-back:hover {
+    cursor: pointer;
+    background-color: vars.$primaryColor;
+    color: white;
+  }
+}

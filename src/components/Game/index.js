@@ -117,10 +117,6 @@ const Game = ({
       />
       </div>
     ) : null}
-    
-
-
-   
 
     </div>
 

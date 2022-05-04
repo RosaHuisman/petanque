@@ -26,6 +26,7 @@ let persistor = persistStore(store);
 const exportedObject = {
     store,
     persistor,
-};
+}; 
     
 export default exportedObject;
+

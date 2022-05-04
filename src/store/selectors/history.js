@@ -1,15 +1,10 @@
-
-
 export const winAllRounds = (players) => {  
-    console.log(players);  
     
     let winAllRounds = [];
     
     players.forEach((player) => {
         player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        console.log(player.winRounds[0]);
-        let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
-        console.log(totalWinRounds);
+        let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);
         if (Number(totalWinRounds) === 6) {
             winAllRounds = [...winAllRounds, player]
         } 
@@ -17,7 +12,6 @@ export const winAllRounds = (players) => {
     winAllRounds.sort((a, b) => {
         return b.totalPoints - a.totalPoints;
     })
-    console.log(winAllRounds);
     return winAllRounds;
     }
 
@@ -27,15 +21,14 @@ export const winTwoRounds = (players) => {
     
     players.forEach((player) => {
         player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
-         if ( Number(totalWinRounds) === 4 ) {
+        let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);         
+        if ( Number(totalWinRounds) === 4 ) {
             winTwoRounds = [...winTwoRounds, player]
         } 
     })
     winTwoRounds.sort((a, b) => {
         return b.totalPoints - a.totalPoints
     })
-    console.log(winTwoRounds);
     return winTwoRounds;
     }
 
@@ -45,7 +38,7 @@ export const winOneRound = (players) => {
     
     players.forEach((player) => {
         player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+        let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);        
         if (Number(totalWinRounds) === 2) {
             winOneRound = [...winOneRound, player]
         } 
@@ -53,7 +46,6 @@ export const winOneRound = (players) => {
     winOneRound.sort((a, b) => {
         return b.totalPoints - a.totalPoints;
     })
-    console.log(winOneRound);
     return winOneRound;
     }
 
@@ -63,7 +55,7 @@ export const winOneRound = (players) => {
         
         players.forEach((player) => {
             player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-            let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+            let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);            
             if (Number(totalWinRounds) === 0) {
                 winNoRound = [...winNoRound, player]
             }
@@ -71,6 +63,5 @@ export const winOneRound = (players) => {
         winNoRound.sort((a, b) => {
             return b.totalPoints - a.totalPoints;
         })
-        console.log(winNoRound);
         return winNoRound;
         }
