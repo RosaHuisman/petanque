@@ -33,23 +33,22 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
   return (
     <div className='history'>
       <p className='history-title'> Historique </p>
-      <div className='history-content'>
-      <nav className='history-content-nav'>
-          
+      <div className="container">
+        <div className="row">
+          <div className="col-xl-3 d-flex flex-column">
             {allGames.map(game => (
-              <button 
-                key={game.id} 
-                onClick={() => handleOnClick(game.id)} 
-                className='history-content-nav-item'
-              >
-                  {new Date(game.date).toLocaleDateString("fr-FR", dateOptions)}
-              </button>
-            ))}
-          
-      </nav>
-        
-      <div> 
-        {isObjEmpty(foundedGame) ? null : (
+                <button 
+                  key={game.id} 
+                  onClick={() => handleOnClick(game.id)} 
+                  className='history-content-nav-item'
+                >
+                    {new Date(game.date).toLocaleDateString("fr-FR", dateOptions)}
+                </button>
+              ))
+            }
+          </div>
+          <div className="col-xl-9">
+            {isObjEmpty(foundedGame) ? null : (
           
             <table className="history-content-table">
               <thead className="history-content-table-head">
@@ -73,12 +72,12 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
                   <td> {player.totalPoints} </td>
                 </tr>
               
-            ))}
+              ))}
               </tbody>
               <tbody className="history-content-table-body">
               {(winTwoRounds(foundedGame.players)).map((player) => (
                   <tr className="history-content-table-body-player">
-                    <td> {(winTwoRounds(foundedGame.players)).indexOf(player) + 1 + winAllRounds.length} </td>
+                    <td> {(winTwoRounds(foundedGame.players)).indexOf(player) + 1 + winAllRounds(foundedGame.players).length} </td>
                     <td> {player.name} </td>
                     <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
                     <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
@@ -91,7 +90,7 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
               <tbody className="history-content-table-body">
               {(winOneRound(foundedGame.players)).map((player) => (
                   <tr className="history-content-table-body-player">
-                    <td> {(winOneRound(foundedGame.players)).indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length} </td>
+                    <td> {(winOneRound(foundedGame.players)).indexOf(player) + 1 + winAllRounds(foundedGame.players).length + winTwoRounds(foundedGame.players).length} </td>
                     <td> {player.name} </td>
                     <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
                     <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
@@ -102,9 +101,9 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
               ))}
               </tbody>
               <tbody className="history-content-table-body">
-            {(winNoRound(foundedGame.players)).map((player) => (
+              {(winNoRound(foundedGame.players)).map((player) => (
                 <tr className="history-content-table-body-player">
-                  <td> {(winNoRound(foundedGame.players)).indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length + winOneRound.length} </td>
+                  <td> {(winNoRound(foundedGame.players)).indexOf(player) + 1 + winAllRounds(foundedGame.players).length + winTwoRounds(foundedGame.players).length + winOneRound(foundedGame.players).length} </td>
                   <td> {player.name} </td>
                   <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
                   <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
@@ -112,14 +111,13 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
                   <td> {player.totalPoints} </td>
                 </tr>
               
-            ))}
+              ))}
               </tbody>
             </table>
-          
-        )}  
-       </div>
+          )}   
+          </div>
+        </div>
       </div>
-      
 
       <Link 
             to="/"
