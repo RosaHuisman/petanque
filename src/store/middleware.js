@@ -8,13 +8,11 @@ const middleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const state = store.getState();
-      console.log('email', state.auth.email);
-      console.log('password', state.auth.password);
       api({
         method: 'POST',
         url: '/login',
         data: {
-          email: state.auth.email,
+          firstName: state.auth.firstName,
           password: state.auth.password,
         },
       })
@@ -50,7 +48,12 @@ const middleware = (store) => (next) => (action) => {
     }
     case SAVE_GAME_IN_DB: {
       const state = store.getState();
-      console.log(state.game.players)
+      // for each player of players, remove the id
+      let players = state.game.players.map((player) => {
+        const { id, ...rest } = player;
+        return rest;
+      }
+      );
          api({
           method: 'POST',
           url:'/game', 
@@ -60,14 +63,13 @@ const middleware = (store) => (next) => (action) => {
               date: new Date(),
               organisator_id: state.auth.id,
             },
-            players: state.game.players,
+            players: players,
             
           }
         })
           .then((response) => {
-            console.log('response', response);
             const payload = { ...response.data };
-            console.log('payload', payload);
+
           })
           .catch((error) => console.log(error)); 
       
@@ -85,8 +87,6 @@ const middleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           const payload = [ ...response.data ];
-          console.log(payload);
-          console.log('players?', payload[0].players);
           store.dispatch(saveAllGames(payload));
         })
         .catch((error) => console.log(error));

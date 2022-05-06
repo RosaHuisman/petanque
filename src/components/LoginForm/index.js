@@ -40,8 +40,8 @@ const LoginForm = ({
           <form autoComplete="off" onSubmit={handleSubmit}>
             
             <Field
-              name="email"
-              placeholder="Adresse Email"
+              name="firstName"
+              placeholder="Prénom"
               onChange={changeField}
               className="login-form-input"
             />
