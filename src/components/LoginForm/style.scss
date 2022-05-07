@@ -52,6 +52,16 @@
     margin-top: 7vh;
 
   }
+
+  &-mobile {
+    border: 4px solid #ddd;
+    background-color: vars.$secondaryColor;
+    padding: 2em;
+    margin: auto;
+    margin-top: 15vh;
+    max-width: 400px;
+    border-radius: .3em;
+  }
 }
 
 .logged {

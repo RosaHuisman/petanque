@@ -29,7 +29,39 @@
             height: 2.5em;
         }
     }
+
+    &-mobile {
+        width: 95vw;
+        margin: 0 auto;
+        
+        &-header {
+            margin-top: vars.$halfGutter;
+            display: flex;
+            justify-content: center;
+
+            &-round-button {
+                font-size: 1.2em;
+                color: white;
+                background-color: vars.$primaryColor;
+                border-radius: .3em;
+                border: 0;
+                padding: .5em;
+                margin-right: .5em;
+            }
     
+            &-result-button {
+                display: block;
+                font-size: 1em;
+                color: white;
+                background-color: vars.$infoColor;
+                border-radius: .3em;
+                border: 0;
+                padding: .5em;
+                height: 2.5em;
+                margin: 2vh auto;
+            }
+        }
+    }
 }
 
 .game_table_player::after {
