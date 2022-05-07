@@ -25,7 +25,7 @@ const NewGame = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleAddPlayer();
+   players.find((existingPlayer) => existingPlayer.name.toLowerCase() === player.toLowerCase()) ? alert('Ce nom de joueur existe déjà, merci de le modifier') : handleAddPlayer(); 
   }
 
   const handleDeleteForm = (evt) => {
@@ -63,14 +63,13 @@ const NewGame = ({
             onChange={changeField}
             value={player}
             className="newgame-form-input"
-          />
-
-          <button
-            type="submit"
-            className="newgame-form-button"
-          >
-            OK
-          </button>
+          />          
+            <button
+              type="submit"
+              className="newgame-form-button"
+              >
+              OK
+              </button>
         </form>
 
         { players.length > 0 ?
