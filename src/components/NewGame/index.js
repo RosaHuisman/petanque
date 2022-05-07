@@ -25,7 +25,7 @@ const NewGame = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-   players.find((existingPlayer) => existingPlayer.name.toLowerCase() === player.toLowerCase()) ? alert('Ce nom de joueur existe déjà, merci de le modifier') : handleAddPlayer(); 
+   players.find((existingPlayer) => existingPlayer.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === player.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')) ? alert('Ce nom de joueur existe déjà, merci de le modifier') : handleAddPlayer(); 
   }
 
   const handleDeleteForm = (evt) => {
