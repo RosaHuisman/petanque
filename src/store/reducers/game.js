@@ -173,8 +173,6 @@ import {
           ...initialState
         }
       }
-
-      
       
       default:
         return state;

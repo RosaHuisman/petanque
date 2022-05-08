@@ -56,11 +56,13 @@ const Game = ({
 
     <div className="game-header">
       <div className="game-header-round-buttons">
-        <button className="game-header-round-button" onClick={handleShowFirstRound}> Tour 1 </button>
-        <button className="game-header-round-button" onClick={handleShowSecondRound}> Tour 2 </button>
-        <button className="game-header-round-button" onClick={handleShowThirdRound}> Tour 3 </button>
+        <button className= {round1Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowFirstRound}> Tour 1 </button>
+        <button className= {round2Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowSecondRound}> Tour 2 </button>
+        <button className= {round3Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowThirdRound}> Tour 3 </button>
       </div>
-      <button
+
+      { round3Open ? (
+        <button
         type="button"
         className="game-header-result-button"
         onClick={handleEndGame}
@@ -68,6 +70,8 @@ const Game = ({
       >
         C'est bon, résultats
       </button>
+      ) : null }
+      
     </div>
 
 

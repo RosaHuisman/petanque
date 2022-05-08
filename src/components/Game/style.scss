@@ -18,6 +18,15 @@
             margin-right: .5em;
         }
 
+        &-round-button-active {
+            font-size: 1.2em;
+            background-color: vars.$secondaryColor;
+            border-radius: .3em;
+            border: 0;
+            padding: 1em;
+            margin-right: .5em;
+        }
+
         &-result-button {
             display: block;
             font-size: 1em;
