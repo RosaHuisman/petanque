@@ -1,7 +1,6 @@
 import {
     SAVE_ALL_GAMES,
-    RETRIEVE_GAME,
-    EMPTY_FOUNDED_GAME
+    RETRIEVE_GAME
   } from '../actions/history';
   
 
@@ -25,12 +24,6 @@ import {
       return {
         ...state,
         foundedGame: state.allGames.find(game => game.id === action.gameId),
-      }
-
-    case EMPTY_FOUNDED_GAME:
-      return {
-        ...state,
-        foundedGame: {},
       }
       
       

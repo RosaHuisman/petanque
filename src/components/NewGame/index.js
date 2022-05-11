@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import Field from '../../containers/Field';
+import Nav from '../../containers/Nav';
 
 import "react-datepicker/dist/react-datepicker.css";
 import './style.scss';
@@ -56,6 +57,7 @@ const NewGame = ({
 
   return (
     <div className="newgame">
+      <Nav />
       <form autoComplete="off" className="newgame-form" onSubmit={handleSubmit}>
           <Field
             name="player"

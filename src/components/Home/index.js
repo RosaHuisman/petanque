@@ -2,14 +2,20 @@ import React from 'react'
 import './style.scss';
 import { Link } from 'react-router-dom';
 import LoginForm from '../../containers/LoginForm';
+import Nav from '../../containers/Nav';
 import MediaQuery from 'react-responsive'
 
 
 const Home = ({
   logged,
   getGames,
+  cleanState,
 
 }) => {
+
+  const handleStartGame = () => {
+    cleanState();
+  } 
 
    const handleGetGames = () => {
      getGames();
@@ -19,13 +25,17 @@ const Home = ({
     <>
       <MediaQuery minWidth={481}>
         <div className="home">
+        <Nav />
+
         <LoginForm />
         
         {logged ? (
+
           <div className='home-links'>
             <Link 
               to="/nouvellepartie"
               className="home-links-button"
+              onClick={handleStartGame}
               >
               Nouvelle partie
             </Link>
@@ -37,6 +47,7 @@ const Home = ({
               Historique
             </Link>
           </div>
+
           ) : null
         }
 

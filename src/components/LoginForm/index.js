@@ -21,7 +21,7 @@ const LoginForm = ({
   return (
     <>
     <MediaQuery minWidth={481}>
-      {isLogged && (
+     {/*  {isLogged && (
         <div className="logged">
             <p className="logged-message">
               {loggedMessage}
@@ -34,7 +34,7 @@ const LoginForm = ({
               Déconnexion
             </button>
         </div>
-      )}
+      )} */}
       
       
       {!isLogged && (

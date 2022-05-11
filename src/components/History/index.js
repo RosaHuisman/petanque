@@ -2,6 +2,7 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { winAllRounds, winTwoRounds, winOneRound, winNoRound } from '../../store/selectors/history';
+import Nav from '../../containers/Nav';
 
 import './style.scss';
 
@@ -9,16 +10,12 @@ const History = ({
   allGames,
   retrieveGame,
   foundedGame,
-  emptyFoundedGame
 }) => {
  
 const handleOnClick = (gameId) => {
   retrieveGame(gameId);
 }
 
-const handleBack = () => {
-  emptyFoundedGame()
-}
 
 function isObjEmpty(obj) {
   for (var prop in obj) {
@@ -32,6 +29,7 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
 
   return (
     <div className='history'>
+      <Nav />
       <p className='history-title'> Historique </p>
       <div className="container">
         <div className="row">
@@ -118,14 +116,6 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
           </div>
         </div>
       </div>
-
-      <Link 
-            to="/"
-            className="history-back"
-            onClick={handleBack}
-            >
-            Retour
-      </Link> 
       
     </div>
   );

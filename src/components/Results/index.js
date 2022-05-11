@@ -2,6 +2,7 @@ import React from "react";
 import './style.scss';
 import { useHistory } from 'react-router-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import Nav from '../../containers/Nav';
 
 const Results = ({
   winAllRounds,
@@ -182,6 +183,7 @@ const MyDoc = () => {
 
   return (
     <div className="results">
+      <Nav />
       <p className="results-title"> Les résultats </p>
       <table className="results-table">
         <thead className="results-table-head">

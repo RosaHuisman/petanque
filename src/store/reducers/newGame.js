@@ -91,9 +91,7 @@ import {
 
       case CLEAR_STATE: {
         return {
-          ...state,
-          players: [],
-          player: '',
+          ...initialState,
         }
       } 
       

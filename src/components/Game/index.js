@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import Round from './Round';
 import MediaQuery from 'react-responsive'
+import Nav from '../../containers/Nav';
 
 import './style.scss';
 
@@ -53,6 +54,7 @@ const Game = ({
     <>
       <MediaQuery minWidth={481}>
       <div className="game">
+      <Nav />
 
     <div className="game-header">
       <div className="game-header-round-buttons">

@@ -5,7 +5,7 @@
     margin: 0 auto;
     &-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         margin-top: vars.$halfGutter;
     
         &-round-button {
@@ -14,8 +14,8 @@
             background-color: vars.$primaryColor;
             border-radius: .3em;
             border: 0;
-            padding: 1em;
-            margin-right: .5em;
+            padding: .3em 1em;
+            margin-right: 2em;
         }
 
         &-round-button-active {
@@ -23,8 +23,8 @@
             background-color: vars.$secondaryColor;
             border-radius: .3em;
             border: 0;
-            padding: 1em;
-            margin-right: .5em;
+            padding: .3em 1em;
+            margin-right: 2em;
         }
 
         &-result-button {
