@@ -4,6 +4,7 @@ import authReducer from './authentification';
 import newGameReducer from './newGame';
 import gameReducer from './game';
 import historyReducer from './history';
+import homeReducer from './home';
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   newGame: newGameReducer,
   game: gameReducer,
   history: historyReducer,
+  home: homeReducer,
   
 });
 

@@ -54,8 +54,7 @@ const middleware = (store) => (next) => (action) => {
       let players = state.game.players.map((player) => {
         const { id, ...rest } = player;
         return rest;
-      }
-      );
+      });
          api({
           method: 'POST',
           url:'/game', 

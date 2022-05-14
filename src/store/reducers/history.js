@@ -1,13 +1,12 @@
 import {
     SAVE_ALL_GAMES,
-    RETRIEVE_GAME
+    RETRIEVE_GAME,
   } from '../actions/history';
   
 
   export const initialState = {
     allGames: [],
     foundedGame: {},
-
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -25,7 +24,6 @@ import {
         ...state,
         foundedGame: state.allGames.find(game => game.id === action.gameId),
       }
-      
       
       
       default:

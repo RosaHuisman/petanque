@@ -39,13 +39,6 @@ const Home = ({
               >
               Nouvelle partie
             </Link>
-            <Link 
-              to="/historique"
-              className='home-links-button'
-              onClick={handleGetGames}
-              >
-              Historique
-            </Link>
           </div>
 
           ) : null

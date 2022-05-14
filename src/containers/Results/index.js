@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import Results from '../../components/Results';
-
-import { cleanState } from '../../store/actions/game';
-
+import { saveGameInDB } from '../../store/actions/game';
 
 const mapStateToProps = (state, ownProps) => ({
  players: state.game.players,
@@ -15,8 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 
-cleanState: () => {
-    dispatch(cleanState());
+saveGame: () => {
+    dispatch(saveGameInDB());
 },
 
 });

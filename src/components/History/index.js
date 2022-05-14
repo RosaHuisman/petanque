@@ -1,6 +1,5 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { winAllRounds, winTwoRounds, winOneRound, winNoRound } from '../../store/selectors/history';
 import Nav from '../../containers/Nav';
 
@@ -30,7 +29,6 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
   return (
     <div className='history'>
       <Nav />
-      <p className='history-title'> Historique </p>
       <div className="container">
         <div className="row">
           <div className="col-xl-3 d-flex flex-column">

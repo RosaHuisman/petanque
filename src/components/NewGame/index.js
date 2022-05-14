@@ -163,7 +163,7 @@ const NewGame = ({
                   type="button"
                   className="newgame-list-player-edit-button"
                   onClick={handleMakeGame}
-                  Redirect="/jeu"
+                  // Redirect="/jeu"
                 >
                   Tout est ok
                 </button>

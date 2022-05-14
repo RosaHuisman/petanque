@@ -62,17 +62,6 @@ const Game = ({
         <button className= {round2Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowSecondRound}> Tour 2 </button>
         <button className= {round3Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowThirdRound}> Tour 3 </button>
       </div>
-
-      { round3Open ? (
-        <button
-        type="button"
-        className="game-header-result-button"
-        onClick={handleEndGame}
-        Redirect="/resultats"
-      >
-        C'est bon, résultats
-      </button>
-      ) : null }
       
     </div>
 

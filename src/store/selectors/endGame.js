@@ -1,12 +1,16 @@
-
-
-export const winAllRounds = (players) => {  
-    
+export const winAllRounds = (players) => {    
     let winAllRounds = [];
     
     players.forEach((player) => {
         player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+        let totalWinRounds = null;
+            if (player.winRounds.length === 1) {
+                totalWinRounds = player.winRounds[0];
+            } else if (player.winRounds.length === 2) {
+                totalWinRounds = player.winRounds[0] + player.winRounds[1];
+            } else { 
+                 totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+                }
         if (Number(totalWinRounds) === 6) {
             winAllRounds = [...winAllRounds, player]
         } 
@@ -23,7 +27,14 @@ export const winTwoRounds = (players) => {
     
     players.forEach((player) => {
         player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+        let totalWinRounds = null;
+            if (player.winRounds.length === 1) {
+                totalWinRounds = player.winRounds[0];
+            } else if (player.winRounds.length === 2) {
+                totalWinRounds = player.winRounds[0] + player.winRounds[1];
+            } else { 
+                 totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+                }
          if ( Number(totalWinRounds) === 4 ) {
             winTwoRounds = [...winTwoRounds, player]
         } 
@@ -40,7 +51,14 @@ export const winOneRound = (players) => {
     
     players.forEach((player) => {
         player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+        let totalWinRounds = null;
+            if (player.winRounds.length === 1) {
+                totalWinRounds = player.winRounds[0];
+            } else if (player.winRounds.length === 2) {
+                totalWinRounds = player.winRounds[0] + player.winRounds[1];
+            } else { 
+                 totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+                }
         if (Number(totalWinRounds) === 2) {
             winOneRound = [...winOneRound, player]
         } 
@@ -57,7 +75,14 @@ export const winOneRound = (players) => {
         
         players.forEach((player) => {
             player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-            let totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+            let totalWinRounds = null;
+            if (player.winRounds.length === 1) {
+                totalWinRounds = player.winRounds[0];
+            } else if (player.winRounds.length === 2) {
+                totalWinRounds = player.winRounds[0] + player.winRounds[1];
+            } else { 
+                 totalWinRounds = player.winRounds[0] + player.winRounds[1] + player.winRounds[2];
+                }
             if (Number(totalWinRounds) === 0) {
                 winNoRound = [...winNoRound, player]
             }

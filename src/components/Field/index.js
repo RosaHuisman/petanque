@@ -32,13 +32,6 @@ const Field = ({
         min={min}
         max={max}
       />
-
-      {/* <label
-        htmlFor={inputId}
-        className={className? className : 'field-label'}
-      >
-        {placeholder}
-      </label> */}
     </div>
   );
 };

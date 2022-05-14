@@ -1,35 +1,69 @@
 import React from 'react';
+import History from '../../containers/History';
+import { Link } from 'react-router-dom';
+import './style.scss';
+
 
 const Nav = ({
     isLogged,
     loggedMessage,
     handleLogout,
+    showResults,
+    getGames,
+    historyOpen,
+    isActive,
+    homeIsActive,
+    gameIsActive,
+    historyIsActive,
+    resultIsActive,
     
 }) => {
+
+  const handleResults = (e) => {
+    isActive(e.target.name);
+    showResults();
+  }
+
+  const handleHistory = (e) => {
+    isActive(e.target.name);
+    getGames();
+   }
+
+   const handleIsActive = (e) => {
+     isActive(e.target.name)
+  }
   
   return (
     <>
 
     { isLogged ? (
 
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg navbar-light justify-content-between mb-5">
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                  <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+        <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                  <a className={homeIsActive ? "nav-link active " : "nav-link"} href="/" name="home" onClick={handleIsActive}>Accueil</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/jeu">Jeu</a>
+              <li className="nav-item">
+                  <a className={gameIsActive ? "nav-link active" : "nav-link"} href="/jeu" name="game" onClick={handleIsActive}>Jeu</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/resultats">Résultats</a>
+              <li className="nav-item">
+                  <a className={resultIsActive ? "nav-link active" : "nav-link"} href="/resultats" name="result" onClick={handleResults}>Résultats</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/historique">Historique</a>
+              <li className="nav-item">
+                <Link 
+                to="/historique"
+                className={historyIsActive ? "nav-link active" : "nav-link"}
+                name="history"
+                onClick={handleHistory}
+                >
+                Historique
+              </Link>
               </li>
+              
             </ul>
         </div>
         <div className="logged">
@@ -47,6 +81,12 @@ const Nav = ({
     </nav>
 
       ) : null }
+
+      { historyOpen ? (
+        <History />
+      ) : null }
+
+
 
     </>
 

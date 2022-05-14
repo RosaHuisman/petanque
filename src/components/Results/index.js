@@ -1,6 +1,5 @@
 import React from "react";
 import './style.scss';
-import { useHistory } from 'react-router-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import Nav from '../../containers/Nav';
 
@@ -9,14 +8,11 @@ const Results = ({
   winTwoRounds,
   winOneRound,
   winNoRound,
-  cleanState
+  saveGame
 }) => {
 
-let history = useHistory();
-
-const handleFinish = () => {
-  cleanState();
-  history.push("/");
+const handleSave = () => {
+  saveGame();
 } 
 
 const fileName = `Results ${new Date().toDateString()}.pdf`;
@@ -82,7 +78,7 @@ const MyDoc = () => {
           </View> 
         </View>
         {winAllRounds.map((player) => (
-            <View style={styles.tableRow}>
+            <View style={styles.tableRow} key={player.id}>
               <View style={styles.tableCol}>  
                 <Text style={styles.tableCell}> {winAllRounds.indexOf(player) + 1} </Text>
               </View> 
@@ -105,7 +101,7 @@ const MyDoc = () => {
             
           ))}
           {winTwoRounds.map((player) => (
-            <View style={styles.tableRow}>
+            <View style={styles.tableRow} key={player.id}>
               <View style={styles.tableCol}>  
                 <Text style={styles.tableCell}> {winTwoRounds.indexOf(player) + 1 + winAllRounds.length} </Text>
               </View> 
@@ -129,7 +125,7 @@ const MyDoc = () => {
           ))}
 
           {winOneRound.map((player) => (
-            <View style={styles.tableRow}>
+            <View style={styles.tableRow} key={player.id}>
               <View style={styles.tableCol}>  
                 <Text style={styles.tableCell}> {winOneRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length} </Text>
               </View> 
@@ -153,7 +149,7 @@ const MyDoc = () => {
           ))}
 
           {winNoRound.map((player) => (
-            <View style={styles.tableRow}>
+            <View style={styles.tableRow} key={player.id}>
               <View style={styles.tableCol}>  
                 <Text style={styles.tableCell}> {winNoRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length + winOneRound.length} </Text>
               </View> 
@@ -184,7 +180,6 @@ const MyDoc = () => {
   return (
     <div className="results">
       <Nav />
-      <p className="results-title"> Les résultats </p>
       <table className="results-table">
         <thead className="results-table-head">
           <tr className="results-table-head-row">
@@ -198,7 +193,7 @@ const MyDoc = () => {
         </thead>
         <tbody className="results-table-body">
         {winAllRounds.map((player) => (
-          <tr className="results-table-body-player">
+          <tr className="results-table-body-player" key={player.id}>
             <td> {winAllRounds.indexOf(player) + 1} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -211,7 +206,7 @@ const MyDoc = () => {
       </tbody>
       <tbody className="results-table-body">
       {winTwoRounds.map((player) => (
-          <tr className="results-table-body-player">
+          <tr className="results-table-body-player" key={player.id}>
             <td> {winTwoRounds.indexOf(player) + 1 + winAllRounds.length} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -224,7 +219,7 @@ const MyDoc = () => {
       </tbody>
       <tbody className="results-table-body">
       {winOneRound.map((player) => (
-          <tr className="results-table-body-player">
+          <tr className="results-table-body-player" key={player.id}>
             <td> {winOneRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -237,7 +232,7 @@ const MyDoc = () => {
       </tbody>
       <tbody className="results-table-body">
       {winNoRound.map((player) => (
-          <tr className="results-table-body-player">
+          <tr className="results-table-body-player" key={player.id}>
             <td> {winNoRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length + winOneRound.length} </td>
             <td> {player.name} </td>
             <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
@@ -262,10 +257,9 @@ const MyDoc = () => {
       <button
         type="button"
         className="results-button"
-        onClick={handleFinish}
-        Redirect="/"
+        onClick={handleSave}
       >
-      fin  
+      Sauvegarder  
       </button>
     </div>
     
