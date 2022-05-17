@@ -159,6 +159,35 @@ import {
       }
 
       case END_GAME: {
+
+        /* if (Number(action.roundid) === 1) {
+          return {
+            ...state,
+            winAllRounds: winAllRounds(state.round1),
+            winTwoRounds: winTwoRounds(state.round1),
+            winOneRound: winOneRound(state.round1),
+            winNoRound: winNoRound(state.round1),
+          }
+        } else if (Number(action.roundid) === 2) {
+          return {
+            ...state,
+            winAllRounds: winAllRounds(state.round2),
+            winTwoRounds: winTwoRounds(state.round2),
+            winOneRound: winOneRound(state.round2),
+            winNoRound: winNoRound(state.round2)
+          }
+        } else if (Number(action.roundid) === 3) {
+          return {
+            ...state,
+            winAllRounds: winAllRounds(state.round3),
+            winTwoRounds: winTwoRounds(state.round3),
+            winOneRound: winOneRound(state.round3),
+            winNoRound: winNoRound(state.round3)
+          }
+        }
+        break;
+      } */
+
         return {
           ...state,
           winAllRounds: winAllRounds(state.players),

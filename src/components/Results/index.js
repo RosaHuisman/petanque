@@ -180,6 +180,17 @@ const MyDoc = () => {
   return (
     <div className="results">
       <Nav />
+
+    <div>
+      <button
+        type="button"
+        className="results-button"
+        onClick={handleSave}
+      >
+      Sauvegarder  
+      </button>
+    </div>
+
       <table className="results-table">
         <thead className="results-table-head">
           <tr className="results-table-head-row">
@@ -252,16 +263,6 @@ const MyDoc = () => {
       }
     </PDFDownloadLink>
     </button>
-
-    <div>
-      <button
-        type="button"
-        className="results-button"
-        onClick={handleSave}
-      >
-      Sauvegarder  
-      </button>
-    </div>
     
     </div>
   );

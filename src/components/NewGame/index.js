@@ -74,6 +74,15 @@ const NewGame = ({
               </button>
         </form>
 
+        <button
+            type="button"
+            className="newgame-list-player-edit-button"
+            onClick={handleMakeGame}
+            // Redirect="/jeu"
+          >
+            Tout est ok
+        </button>
+
         { players.length > 0 ?
         <div className="newgame-list">
         <p className="newgame-list-total"> Nombre total de joueurs : <b>{players.length}</b></p>
@@ -158,15 +167,6 @@ const NewGame = ({
             )
             )}
         </div>
-        
-                <button
-                  type="button"
-                  className="newgame-list-player-edit-button"
-                  onClick={handleMakeGame}
-                  // Redirect="/jeu"
-                >
-                  Tout est ok
-                </button>
         </div>
         :
         <p> Entre le nom des joueurs</p>
