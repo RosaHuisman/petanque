@@ -63,6 +63,7 @@ import {
   const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
 
+      //eslint-disable-next-line
       case CHANGE_VALUE: {
         return {
           ...state,
@@ -264,6 +265,7 @@ import {
         }
       }
 
+      // eslint-disable-next-line
       case SHOW_MESSAGE: {
         return {
           ...state,
@@ -272,6 +274,7 @@ import {
         } 
       };
 
+      // eslint-disable-next-line
       case SHOW_MAKE_ROUND_MESSAGE: {
         return {
           ...state,
@@ -279,6 +282,7 @@ import {
         }
       };
 
+      // eslint-disable-next-line
       case SET_SCORE_MAX: {
         return {
           ...state,
@@ -286,6 +290,7 @@ import {
         } 
       };
 
+      // eslint-disable-next-line
       case SET_DATE: {
         return {
           ...state,
