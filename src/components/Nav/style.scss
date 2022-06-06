@@ -1,15 +1,29 @@
 @use '../../styles/vars';
 
-.nav-link {
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-right: 1.5rem;
+.navigation {
+    background-color: vars.$lightColor;
+
+   &-link {
+        text-decoration: none;
+        font-size: 1.1rem;
+        border: none;
+        margin: 0.5em;
+        padding: 0.5em;
+        background-color: transparent;
+        color: vars.$primaryColor;
+
+        &:hover {
+            color: vars.$lightColor;
+            background-color: vars.$primaryColor;
+            border-radius: 3px;
+
+        }
+    }
 }
 
 .active {
-    background-color: vars.$primaryColor;
-    color: white;
+    color: vars.$primaryColor;
+    text-decoration: underline;
     border-radius: 3px;
 }
 

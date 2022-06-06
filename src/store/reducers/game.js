@@ -5,7 +5,7 @@ import { winAllRounds, winTwoRounds, winOneRound, winNoRound } from '../selector
 
 
 import {
-    MAKE_GAME,
+    PLAYERS_IN_GAME,
     MAKE_ROUND,
     CHANGE_VALUE_GAME,
     CHANGE_VALUE_SCORE,
@@ -16,11 +16,24 @@ import {
     EDIT_SCORE,
     END_GAME,
     CLEAN_STATE,
+    ADD_PLAYER,
+    CHANGE_VALUE,
+    EDIT_FORM,
+    EDIT_PLAYER,
+    DELETE_FORM,
+    DELETE_PLAYER,
+    LOGOUT,
+    SHOW_MESSAGE,
+    SHOW_MAKE_ROUND_MESSAGE,
+    SET_SCORE_MAX,
+    SET_DATE
+
 
   } from '../actions/game';
   
 
   export const initialState = {
+    player:'',
     players: [],
     round1: [],
     round2: [],
@@ -35,13 +48,29 @@ import {
     winTwoRounds: [],
     winOneRound: [],
     winNoRound: [],
+    editPlayer:'',
+    playerId: null,
+    showDeletePlayerForm: false,
+    showEditPlayerForm: false,
+    showSaveMessage: false,
+    savedMessage: '',
+    showMakeRoundMessage: false,
+    scoreMax: 13,
+    date: new Date(),
 
   };
   
   const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
 
-      case MAKE_GAME: {
+      case CHANGE_VALUE: {
+        return {
+          ...state,
+          [action.key]: action.value,
+        };
+      };
+
+      case PLAYERS_IN_GAME: {
         return {
           ...state,
           players: action.players,
@@ -53,6 +82,7 @@ import {
           ...state,
           ['round'+action.id]: makeTour(state.players),
           scoreIsEntered: false,
+          showMakeRoundMessage: false,
         }
       }
 
@@ -159,35 +189,6 @@ import {
       }
 
       case END_GAME: {
-
-        /* if (Number(action.roundid) === 1) {
-          return {
-            ...state,
-            winAllRounds: winAllRounds(state.round1),
-            winTwoRounds: winTwoRounds(state.round1),
-            winOneRound: winOneRound(state.round1),
-            winNoRound: winNoRound(state.round1),
-          }
-        } else if (Number(action.roundid) === 2) {
-          return {
-            ...state,
-            winAllRounds: winAllRounds(state.round2),
-            winTwoRounds: winTwoRounds(state.round2),
-            winOneRound: winOneRound(state.round2),
-            winNoRound: winNoRound(state.round2)
-          }
-        } else if (Number(action.roundid) === 3) {
-          return {
-            ...state,
-            winAllRounds: winAllRounds(state.round3),
-            winTwoRounds: winTwoRounds(state.round3),
-            winOneRound: winOneRound(state.round3),
-            winNoRound: winNoRound(state.round3)
-          }
-        }
-        break;
-      } */
-
         return {
           ...state,
           winAllRounds: winAllRounds(state.players),
@@ -202,6 +203,96 @@ import {
           ...initialState
         }
       }
+
+      case ADD_PLAYER: {
+        let ids = [0];
+        state.players.map(player => ids.push(player.id));
+        return {
+          ...state,
+          players: [
+            {
+              id: (Math.max(...ids) +1),
+              name: state.player,
+              winRounds: [],
+              pointsRound1: 0,
+              pointsRound2: 0,
+              pointsRound3: 0,
+            },
+            ...state.players,
+          ],
+          player: '',
+        };
+        
+      }
+  
+      case DELETE_FORM: {
+        return {
+          ...state,
+          showDeletePlayerForm: !state.showDeletePlayerForm,
+          playerId: action.playerId,
+        }
+      }
+  
+      case DELETE_PLAYER: {
+        return {
+          ...state,
+          players: state.players.filter((player) => player.id !== Number(action.playerId)),
+          showDeletePlayerForm: !state.showDeletePlayerForm,
+        }
+      }
+  
+      case EDIT_FORM: {
+        return {
+          ...state,
+          showEditPlayerForm: !state.showEditPlayerForm,
+          playerId: action.playerId,
+        }
+      }
+  
+      case EDIT_PLAYER: {
+        return {
+          ...state,
+          players: state.players.map(player => Number(player.id) === Number(action.playerId) ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score), winRounds: [], pointsRound1: 0, pointsRound2: 0, pointsRound3: 0} : player),
+          editPlayer: '',
+          showEditPlayerForm: !state.showEditPlayerForm,
+        }
+      }
+      
+      case LOGOUT: {
+        return {
+          ...initialState
+        }
+      }
+
+      case SHOW_MESSAGE: {
+        return {
+          ...state,
+          showSaveMessage: !state.showSaveMessage,
+          savedMessage: action.message,
+        } 
+      };
+
+      case SHOW_MAKE_ROUND_MESSAGE: {
+        return {
+          ...state,
+          showMakeRoundMessage: !state.showMakeRoundMessage,
+        }
+      };
+
+      case SET_SCORE_MAX: {
+        return {
+          ...state,
+          scoreMax: Number(action.scoreMax),
+        } 
+      };
+
+      case SET_DATE: {
+        return {
+          ...state,
+          date: action.date,
+        }
+      };
+      
       
       default:
         return state;

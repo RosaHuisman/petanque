@@ -12,6 +12,9 @@ const Round = ({
   roundid,
   corridorIds,
   editScore,
+  showMakeRoundMessage,
+  roundMessageVisible,
+  scoreMax
 }) => {
 
   const handleMakeRound = () => {
@@ -26,6 +29,10 @@ const Round = ({
     editScore(corridorId, roundid);
   }
 
+  const handleSureMakeRound = () => {
+    showMakeRoundMessage();
+  }
+
   return (
     <div className="round">
 
@@ -33,10 +40,30 @@ const Round = ({
   <button
       type="button"
       className="round-button"
-      onClick={handleMakeRound}
+      onClick={handleSureMakeRound}
     >
       Créer tour
     </button>
+) : null}
+
+{ roundMessageVisible ? (
+  <div className="round-make-round-message">
+    <p>Une fois le premier tour créé, vous ne pourrez plus accepter de nouveaux joueurs</p>
+    <button
+      type="button"
+      className="round-make-round-message-button"
+      onClick={handleMakeRound}
+    >
+      OK
+    </button>
+    <button
+      type="button"
+      className="round-make-round-message-button"
+      onClick={handleSureMakeRound}
+    >
+      Annuler
+    </button>
+  </div>
 ) : null}
 
 
@@ -139,7 +166,7 @@ const Round = ({
               className="round-table-score-input"
               type="number"
               min="0" 
-              max="13"
+              max={scoreMax}
               onChange={changeFieldScore}
               roundid={roundid}
               corridorid={corridor.id}
@@ -159,7 +186,7 @@ const Round = ({
               className="round-table-score-input"
               type="number"
               min="0" 
-              max="13"
+              max={scoreMax}
               onChange={changeFieldScore}
               roundid={roundid}
               corridorid={corridor.id}

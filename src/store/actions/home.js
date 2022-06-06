@@ -5,4 +5,14 @@ export const isActive = (name) => ({
   name
 });
 
+export const playersIsActive = () => ({
+  type: IS_ACTIVE,
+  name: 'players'
+});
+
+export const newGameIsActive = () => ({
+  type: IS_ACTIVE,
+  name: 'newGame'
+});
+
 

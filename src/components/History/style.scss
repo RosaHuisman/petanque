@@ -1,19 +1,22 @@
 @use '../../styles/vars';
 
 .history {
-  width: 80vw;
-  margin: 0 auto;
   text-align: center;
 
+  &-select {
+    margin: 2rem;
+    padding: 1em;
+    background-color: vars.$primaryColor;
+    color: vars.$lightColor;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+  }
+
   &-content {
-    display: flex;
-    width: 100%;
     
     &-nav {
       margin-right: 2rem;
-      display: flex;
-      flex-direction: column;
-      width: auto;
 
       &-item {
         font-size: .8em;

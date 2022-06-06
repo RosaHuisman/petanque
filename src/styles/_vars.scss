@@ -1,13 +1,13 @@
 @use 'sass:math';
 
-$menuWidth: 250px;
-$smallMenuWidth: 150px;
-$small: 700px;
+//$menuWidth: 250px;
+//$smallMenuWidth: 150px;
+//$small: 700px;
 $gutter: 1.5rem;
 $halfGutter: math.div($gutter, 2);
 $primaryColor: #e2c81d;
-$secondaryColor: #f0f0f0;
-$infoColor: #28a4ba;
+$secondaryColor: #46768b;
+$infoColor: #f3bc3b;
 $warningColor: #f0ad4e;
 $dangerColor: #d9534f;
 $successColor: #5cb85c;

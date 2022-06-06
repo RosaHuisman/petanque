@@ -1,19 +1,27 @@
 import React from "react";
 import './style.scss';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
-import Nav from '../../containers/Nav';
+//import Nav from '../../containers/Nav';
 
 const Results = ({
   winAllRounds,
   winTwoRounds,
   winOneRound,
   winNoRound,
-  saveGame
+  saveGame,
+  showSaveMessage,
+  savedMessage,
+  hideSaveMessage
 }) => {
 
 const handleSave = () => {
   saveGame();
 } 
+
+const handleShowSaveMessage = () => {
+  hideSaveMessage();
+}
+
 
 const fileName = `Results ${new Date().toDateString()}.pdf`;
 
@@ -179,7 +187,6 @@ const MyDoc = () => {
 
   return (
     <div className="results">
-      <Nav />
 
     <div>
       <button
@@ -190,6 +197,8 @@ const MyDoc = () => {
       Sauvegarder  
       </button>
     </div>
+    { showSaveMessage ? <div className="
+    results-save-message">{savedMessage} <button onClick={handleShowSaveMessage} className="results-save-message-button"> ok </button></div> : null }
 
       <table className="results-table">
         <thead className="results-table-head">

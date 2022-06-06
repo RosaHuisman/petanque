@@ -44,13 +44,6 @@ const FieldScore = ({
         player3={player3}
 
       />
-
-     {/*  <label
-        htmlFor={teamid}
-        className="field-score-label"
-      >
-        {placeholder}
-      </label> */}
       
     </div>
    

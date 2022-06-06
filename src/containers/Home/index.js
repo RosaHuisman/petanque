@@ -6,6 +6,14 @@ import { cleanState } from '../../store/actions/game';
 
 const mapStateToProps = (state) => ({
   logged: state.auth.logged,
+  homeIsActive: state.home.homeIsActive,
+  gameIsActive: state.home.gameIsActive,
+  historyIsActive: state.home.historyIsActive,
+  resultIsActive: state.home.resultIsActive,
+  playersIsActive: state.home.playersIsActive,
+  newGameIsActive: state.home.newGameIsActive,
+  players: state.game.players,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

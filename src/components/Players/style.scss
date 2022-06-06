@@ -1,60 +1,13 @@
 @use 'src/styles/vars';
 
 .newgame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 4rem auto;
-
-    &-scoreMax {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        &-label {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: vars.$primaryColor;
-        }
-
-        &-select {
-            padding: .6em;
-            margin-bottom: 2rem;
-        }
-    }
-
-    &-calendar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-    }
-
-    &-button {
-        margin-top: 2rem;
-        text-decoration: none;
-        font-size: 1.1rem;
-        border: none;
-        padding: 0.5em;
-        background-color: vars.$primaryColor;
-        color: vars.$lightColor;
-        border-radius: 3px;
-
-        &:hover {
-            background-color: vars.$secondaryColor;
-            border-radius: 3px;
-
-        }
-
-    }
-    
     
     &-form {
         display: flex;
         justify-content: center;
 
         &-input {
+            width: 100%;
             padding: .7em;
             font-size: 1.2em;
             border: 1px solid #ddd;

@@ -22,7 +22,7 @@ import {
     case RETRIEVE_GAME:
       return {
         ...state,
-        foundedGame: state.allGames.find(game => game.id === action.gameId),
+        foundedGame: state.allGames.find(game => Number(game.id) === Number(action.gameId)),
       }
       
       

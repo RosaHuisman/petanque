@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import NewGame from '../../components/NewGame';
-import { deletePlayer, editForm, editPlayer, deleteForm, addPlayer, setScoreMax, setDate  } from '../../store/actions/game';
-import { playersIsActive } from '../../store/actions/home';
+import NewGame from '../../components/Players';
+import { deletePlayer, editForm, editPlayer, deleteForm, setPlayersInGame, addPlayer  } from '../../store/actions/game';
  
 const mapStateToProps = (state) => ({
   player: state.game.player,
@@ -9,7 +8,9 @@ const mapStateToProps = (state) => ({
   players: state.game.players,
   showDeletePlayerForm: state.game.showDeletePlayerForm,
   showEditPlayerForm: state.game.showEditPlayerForm,
-  date: state.game.date,
+  round1: state.game.round1,
+  round2: state.game.round2,
+  round3: state.game.round3,
 
 });
 
@@ -35,19 +36,12 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(editPlayer(playerId));
     },
 
-    changeScoreMax: (scoreMax) => {
-      dispatch(setScoreMax(scoreMax));
+    setPlayersInGame: (players) => {
+      dispatch(setPlayersInGame(players));
     },
 
-    setDate : (date) => {
-      dispatch(setDate(date));
-    },
-
-    showAddPlayerForm: () => {
-      dispatch(playersIsActive());
-    }
+    
 
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewGame);

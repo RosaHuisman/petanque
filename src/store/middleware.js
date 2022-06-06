@@ -1,7 +1,6 @@
 import { LOGIN, saveUser, CHECK_TOKEN } from './actions/authentification';
-import { SAVE_GAME_IN_DB } from './actions/game';
+import { SAVE_GAME_IN_DB, saveMessage } from './actions/game';
 import { GET_GAMES, saveAllGames } from './actions/history';
-import { clearNewGameState } from './actions/newGame';
 
 import api from './utils/api';
 
@@ -22,7 +21,6 @@ const middleware = (store) => (next) => (action) => {
           api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
           const actionSaveUser = saveUser(response.data);
           store.dispatch(actionSaveUser);
-          store.dispatch(clearNewGameState())
         })
         .catch((error) => {
             console.log(error)
@@ -60,8 +58,7 @@ const middleware = (store) => (next) => (action) => {
           url:'/game', 
           data: {
             game: {
-              //date of 'now'
-              date: new Date(),
+              date: state.game.date,
               organisator_id: state.auth.id,
             },
             players: players,
@@ -69,9 +66,7 @@ const middleware = (store) => (next) => (action) => {
           }
         })
           .then((response) => {
-            const payload = { ...response.data };
-            console.log(payload);
-
+            store.dispatch(saveMessage(response.data.message));
           })
           .catch((error) => console.log(error)); 
       

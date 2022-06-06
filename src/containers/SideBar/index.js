@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import Nav from '../../components/Nav';
+import SideBar from '../../components/SideBar';
 import { logout } from '../../store/actions/authentification';
 import { logout as logoutAction } from '../../store/actions/authentification';
 import { endGame, cleanState } from '../../store/actions/game'
 import { getGames } from '../../store/actions/history';
-import { isActive, newGameIsActive } from '../../store/actions/home';
+import { isActive } from '../../store/actions/home';
 
 
 const mapStateToProps = (state) => ({
@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   historyIsActive: state.home.historyIsActive,
   resultIsActive: state.home.resultIsActive,
   playersIsActive: state.home.playersIsActive,
+  newGameIsActive: state.home.newGameIsActive,
   players: state.game.players,
 });
 
@@ -37,15 +38,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(isActive(name));
   },
 
-  cleanState: () => {
+  emptyState: () => {
     dispatch(cleanState());
   },
 
-  newGameIsActive: () => {
-    dispatch(newGameIsActive());
-  }
+  
+
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
 

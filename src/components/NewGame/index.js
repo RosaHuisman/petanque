@@ -1,176 +1,65 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
-import Field from '../../containers/Field';
-import Nav from '../../containers/Nav';
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
+
 
 import "react-datepicker/dist/react-datepicker.css";
 import './style.scss';
 
 
 const NewGame = ({
-  changeField,
-  player,
-  playerId,
-  handleAddPlayer,
-  players,
-  showDeletePlayerForm,
-  showDeleteForm,
-  deletePlayer,
-  showEditForm,
-  showEditPlayerForm,
-  editPlayer,
-  makeGame,
-  clearNewGameState,
+  changeScoreMax,
+  setDate,
+  showAddPlayerForm
   
 }) => {
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-   players.find((existingPlayer) => existingPlayer.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === player.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')) ? alert('Ce nom de joueur existe déjà, merci de le modifier') : handleAddPlayer(); 
+  const handleChangeScoreMax = (evt) => {
+    changeScoreMax(evt.target.value);
   }
 
-  const handleDeleteForm = (evt) => {
-    evt.preventDefault();
-    showDeleteForm(evt.target.id);
-  }
-  
-  const handleDelete = (playerId) => {
-    deletePlayer(playerId);
+  const handleCalendar = (date) => {
+    setDate(toUTC(date));
   }
 
-  const handleEdit = (evt) => {
-    evt.preventDefault();
-    showEditForm(evt.target.id);
-  }
-  const handleEditPlayer = (evt) => {
-    evt.preventDefault();
-    editPlayer(playerId);
+  function toUTC(d) {
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000);
   }
 
-  let history = useHistory();
-
-  const handleMakeGame = () => {
-    makeGame(players);
-    clearNewGameState();
-    history.push("/jeu");
+  const handleStartGame = () => {
+    showAddPlayerForm();
   }
+
 
   return (
     <div className="newgame">
-      <Nav />
-      <form autoComplete="off" className="newgame-form" onSubmit={handleSubmit}>
-          <Field
-            name="player"
-            placeholder="Nom joueur"
-            onChange={changeField}
-            value={player}
-            className="newgame-form-input"
-          />          
-            <button
-              type="submit"
-              className="newgame-form-button"
-              >
-              OK
-              </button>
-        </form>
 
-        <button
-            type="button"
-            className="newgame-list-player-edit-button"
-            onClick={handleMakeGame}
-            // Redirect="/jeu"
-          >
-            Tout est ok
-        </button>
 
-        { players.length > 0 ?
-        <div className="newgame-list">
-        <p className="newgame-list-total"> Nombre total de joueurs : <b>{players.length}</b></p>
-        
-        <div>
-          {players.map((player)=>(
-              <div key={player.id} className="newgame-list-player"> <span className="newgame-list-player-name"> {player.name} </span>
-                
-                {(Number(playerId) === Number(player.id) && showDeletePlayerForm) ? (
-                  <form 
-                    autoComplete="off" 
-                    className="" 
-                    onSubmit={handleEditPlayer}
-                    {...player}
-                  >
-                    <span> Supprimer ? </span>
-        
-                <button
-                  type="button"
-                  className="newgame-list-player-edit-button"
-                  onClick={() => handleDelete(player.id)}
-                >
-                  Oui
-                </button>
-                  <button
-                    type="button"
-                    className="newgame-list-player-edit-button"
-                    onClick={handleDelete}
-                  >
-                    Non
-                  </button>
-                </form>
-                ) : (
-                  <button
-                  type="button"
-                  className="newgame-list-player-button bi bi-trash3"
-                  {...player}
-                  onClick={handleDeleteForm}
-                >
-                </button>
-                )}
+      <div className="newgame-scoreMax">
+        <label htmlFor="scoreMax" className="newgame-scoreMax-label">Jusqu'à combien de points va la partie:</label>
+        <select name="scoreMax" id="scoreMax" onChange={handleChangeScoreMax} className="newgame-scoreMax-select">
+            <option value="13">13</option>
+            <option value="7">7</option>
+        </select>
+      </div>
 
-                  {(Number(playerId) === Number(player.id) && showEditPlayerForm) ? (
-                  <form 
-                    autoComplete="off" 
-                    className="newgame-list-player-edit" 
-                    onSubmit={handleEditPlayer}
-                    {...player}
-                  >
-                  <Field
-                    name="editPlayer"
-                    placeholder="Nouveau nom joueur"
-                    onChange={changeField}
-                    value={player}
-                    className="newgame-list-player-edit-input"
-                  />
-        
-                  <button
-                    type="submit"
-                    className="newgame-list-player-edit-button"
-                  >
-                    OK
-                  </button>
-                  <button
-                    type="button"
-                    className="newgame-list-player-edit-button"
-                    onClick={handleEdit}
-                  >
-                    Annuler
-                  </button>
-                </form>
-                ) : (
-                  <button
-                  type="button"
-                  className="newgame-list-player-button bi bi-pencil-fill"
-                  {...player}
-                  onClick={handleEdit}
-                >
-                </button>
-                )}
-               </div>
-            )
-            )}
-        </div>
-        </div>
-        :
-        <p> Entre le nom des joueurs</p>
-        }
+      <div className="newgame-calendar">
+        <p className="newgame-scoreMax-label"> Date : </p>
+      <Calendar 
+        onChange={handleCalendar} 
+        />
+      </div>
+
+      <button
+        type="button"
+        className="newgame-button"
+        onClick={handleStartGame}
+        >
+        C'est noté !
+      </button>
+     
+
+     
     </div>
 
   );

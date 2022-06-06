@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Field from '../../components/Field';
-import { changeValue } from '../../store/actions/newGame';
+import { changeValue } from '../../store/actions/game';
 import { changeValueLogin } from '../../store/actions/authentification';
 
 
 const mapStateToProps = (state, ownProps) => ({
-  value: state.newGame[ownProps.name],
+  value: state.game[ownProps.name],
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

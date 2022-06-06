@@ -8,6 +8,7 @@ import {
     gameIsActive: false,
     historyIsActive: false,
     resultIsActive: false,
+    playersIsActive: false,
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -17,7 +18,7 @@ import {
     case IS_ACTIVE:
       return {
         ...initialState,
-        //[action.name+'isActive']: !state[action.name+'isActive'],
+        //[action.name+'IsActive']: !state[action.name+'IsActive'],
         [action.name+'IsActive']: true,
       }
       

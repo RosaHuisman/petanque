@@ -1,9 +1,21 @@
 @use 'src/styles/vars';
 
 .results {
-    width: 80vw;
-    margin: 0 auto;
     text-align: center;
+
+    &-save-message {
+        font-size: .9em;
+        color: vars.$successColor;
+        margin-bottom: .5em;
+
+        &-button {
+            background-color: vars.$successColor;
+            color: vars.$lightColor;
+            border: none;
+            margin-bottom: 1em;
+
+        }
+    }
 
     &-table {
         width: 100%;
@@ -33,7 +45,7 @@
     }
 
     &-button {
-        margin-bottom: 1.5em;
+        margin: 1.5em;
         padding: .5em 1em;
         font-size: 1rem;
         font-weight: bold;

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from '../../components/Game';
-import { makeRound, validScore, showFirstRound, showSecondRound, showThirdRound, editScore, endGame, saveGameInDB } from '../../store/actions/game';
+import { makeRound, validScore, showFirstRound, showSecondRound, showThirdRound, editScore, endGame, saveGameInDB, showMakeRoundMessage } from '../../store/actions/game';
 
  
 const mapStateToProps = (state) => ({
@@ -20,6 +20,8 @@ const mapStateToProps = (state) => ({
   winTwoRounds: state.game.winTwoRounds,
   winOneRound: state.game.winOneRound,
   winNoRound: state.game.winNoRound,
+  roundMessageVisible: state.game.showMakeRoundMessage,
+  scoreMax: state.game.scoreMax,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -52,6 +54,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(endGame());
     dispatch(saveGameInDB());
   },
+
+  showMakeRoundMessage: () => {
+    dispatch(showMakeRoundMessage());
+  }
 
 });
 

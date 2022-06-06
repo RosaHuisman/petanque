@@ -1,8 +1,6 @@
 @use '../../styles/vars';
 
 .game {
-    width: 80vw;
-    margin: 0 auto;
     &-header {
         display: flex;
         justify-content: center;

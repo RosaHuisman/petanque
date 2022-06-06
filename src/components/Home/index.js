@@ -4,18 +4,26 @@ import { Link } from 'react-router-dom';
 import LoginForm from '../../containers/LoginForm';
 import Nav from '../../containers/Nav';
 import MediaQuery from 'react-responsive'
+import History from '../../containers/History';
+import Results from '../../containers/Results';
+import Game from '../../containers/Game';
+import NewGame from '../../containers/NewGame';
+import Players from '../../containers/Players';
+import SideBar from '../../containers/SideBar';
 
 
 const Home = ({
   logged,
   getGames,
-  cleanState,
+  gameIsActive,
+  historyIsActive,
+  resultIsActive,
+  playersIsActive,
+  newGameIsActive,
+  players,
+  alertIsActive,
 
 }) => {
-
-  const handleStartGame = () => {
-    cleanState();
-  } 
 
    const handleGetGames = () => {
      getGames();
@@ -25,25 +33,44 @@ const Home = ({
     <>
       <MediaQuery minWidth={481}>
         <div className="home">
-        <Nav />
-
-        <LoginForm />
-        
-        {logged ? (
-
-          <div className='home-links'>
-            <Link 
-              to="/nouvellepartie"
-              className="home-links-button"
-              onClick={handleStartGame}
-              >
-              Nouvelle partie
-            </Link>
+          
+          <div className='home-sidebar'>
+          <SideBar />
           </div>
 
-          ) : null
-        }
+          <div className='home-content'>            
+              {logged && players.length > 0 ? (
+              <Nav />
+              ) : null
+            }
+              
+              {!logged ? (
+              <LoginForm />
+              ) : null
+            }
 
+              {newGameIsActive && logged ? (
+              <NewGame />
+              ) : null
+            }
+
+            {playersIsActive && logged ? (
+              <Players />
+              ) : null
+            }
+
+            { historyIsActive && logged ? (
+              <History />
+            ) : null }
+
+            { resultIsActive && logged ? (
+              <Results />
+            ) : null }
+
+            { gameIsActive && logged ? (
+              < Game />
+                ) : null }
+          </div>
       </div>
 
       </MediaQuery>

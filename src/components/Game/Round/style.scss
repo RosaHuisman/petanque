@@ -11,6 +11,21 @@
         margin-right: .5em; 
     }
 
+    &-make-round-message {
+        font-size: .9em;
+        color: vars.$infoColor;
+        margin-bottom: .5em;
+        margin-top: 1.5em;
+
+        &-button {
+            background-color: vars.$infoColor;
+            color: vars.$lightColor;
+            margin-left: .5em;
+            border: none;
+
+        }
+    }
+
     &-table {
         &-score {
             &-input {

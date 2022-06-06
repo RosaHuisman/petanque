@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import Round from './Round';
 import MediaQuery from 'react-responsive'
-import Nav from '../../containers/Nav';
 
 import './style.scss';
 
@@ -27,6 +26,9 @@ const Game = ({
   scoreIsEntered,
   editScore,
   endGame,
+  showMakeRoundMessage,
+  roundMessageVisible,
+  scoreMax,
 
 }) => {
   
@@ -54,13 +56,12 @@ const Game = ({
     <>
       <MediaQuery minWidth={481}>
       <div className="game">
-      <Nav />
 
     <div className="game-header">
       <div className="game-header-round-buttons">
-        <button className= {round1Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowFirstRound}> Tour 1 </button>
-        <button className= {round2Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowSecondRound}> Tour 2 </button>
-        <button className= {round3Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowThirdRound}> Tour 3 </button>
+        <button className= {round1Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowFirstRound}> Match 1 </button>
+        <button className= {round2Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowSecondRound}> Match 2 </button>
+        <button className= {round3Open ? "game-header-round-button-active" : "game-header-round-button"} onClick={handleShowThirdRound}> Match 3 </button>
       </div>
       
     </div>
@@ -80,6 +81,9 @@ const Game = ({
       corridorIds={corridorIds1}
       scoreIsEntered={scoreIsEntered}
       editScore={editScore}
+      showMakeRoundMessage={showMakeRoundMessage}
+      roundMessageVisible={roundMessageVisible}
+      scoreMax={scoreMax}
     />
     </div>
     ) : null}
@@ -96,6 +100,8 @@ const Game = ({
       roundid='2'
       corridorIds={corridorIds2}
       editScore={editScore}
+      scoreMax={scoreMax}
+
     />
     </div>
     ) : null}
@@ -112,6 +118,8 @@ const Game = ({
       roundid='3'
       corridorIds={corridorIds3}
       editScore={editScore}
+      scoreMax={scoreMax}
+
     />
     </div>
     ) : null}
@@ -154,6 +162,7 @@ const Game = ({
         corridorIds={corridorIds1}
         scoreIsEntered={scoreIsEntered}
         editScore={editScore}
+        showMakeRoundMessage={showMakeRoundMessage}
       />
       </div>
       ) : null}

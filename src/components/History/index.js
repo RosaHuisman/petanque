@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 import { winAllRounds, winTwoRounds, winOneRound, winNoRound } from '../../store/selectors/history';
-import Nav from '../../containers/Nav';
+//import Nav from '../../containers/Nav';
 
 import './style.scss';
 
@@ -11,10 +11,10 @@ const History = ({
   foundedGame,
 }) => {
  
-const handleOnClick = (gameId) => {
-  retrieveGame(gameId);
+const handleOnChange = (evt) => {
+  console.log(evt.target.value);
+  retrieveGame(evt.target.value);
 }
-
 
 function isObjEmpty(obj) {
   for (var prop in obj) {
@@ -28,22 +28,16 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
 
   return (
     <div className='history'>
-      <Nav />
-      <div className="container">
-        <div className="row">
-          <div className="col-xl-3 d-flex flex-column">
-            {allGames.map(game => (
-                <button 
-                  key={game.id} 
-                  onClick={() => handleOnClick(game.id)} 
-                  className='history-content-nav-item'
-                >
-                    {new Date(game.date).toLocaleDateString("fr-FR", dateOptions)}
-                </button>
-              ))
-            }
+          <div>
+            <select id="history"  onChange={handleOnChange} className="history-select">
+              <option value="">Choisis une partie</option>
+              {allGames.map(game => (
+                  <option value={game.id} key={game.id} date={game.date}>{new Date(game.date).toLocaleDateString("fr-FR", dateOptions)}</option>
+                ))
+              }
+            </select>
           </div>
-          <div className="col-xl-9">
+
             {isObjEmpty(foundedGame) ? null : (
           
             <table className="history-content-table">
@@ -112,10 +106,6 @@ let dateOptions = {weekday: "long", year: "numeric", month: "long", day: "numeri
             </table>
           )}   
           </div>
-        </div>
-      </div>
-      
-    </div>
   );
 };
 
