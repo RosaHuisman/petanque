@@ -55,7 +55,7 @@ const NewGame = ({
         className="newgame-button"
         onClick={handleStartGame}
         >
-        C'est noté !
+        C'est parti !
       </button>
      
 

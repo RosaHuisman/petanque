@@ -48,7 +48,7 @@ const Round = ({
 
 { roundMessageVisible ? (
   <div className="round-make-round-message">
-    <p>Une fois le premier tour créé, vous ne pourrez plus accepter de nouveaux joueurs</p>
+    <p>Une fois le premier tour créé, tu ne pourras plus ajouter de nouveaux joueurs</p>
     <button
       type="button"
       className="round-make-round-message-button"
