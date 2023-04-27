@@ -10,9 +10,9 @@ export const playersIsActive = () => ({
   name: 'players'
 });
 
-export const newGameIsActive = () => ({
+export const dateIsActive = () => ({
   type: IS_ACTIVE,
-  name: 'newGame'
+  name: 'date'
 });
 
 

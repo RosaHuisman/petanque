@@ -8,22 +8,10 @@ const Results = ({
   winTwoRounds,
   winOneRound,
   winNoRound,
-  saveGame,
-  showSaveMessage,
-  savedMessage,
-  hideSaveMessage
+  date,
+  dateIsActive,
+  cleanState,
 }) => {
-
-const handleSave = () => {
-  saveGame();
-} 
-
-const handleShowSaveMessage = () => {
-  hideSaveMessage();
-}
-
-
-const fileName = `Results ${new Date().toDateString()}.pdf`;
 
 // Create styles
 const styles = StyleSheet.create({
@@ -59,12 +47,32 @@ const styles = StyleSheet.create({
   }
 }); 
 
+let dateParsed = new Date(Date.parse(date));
+
+const formatter = new Intl.DateTimeFormat('fr-FR', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+let fileName = `Résultats du ${date ? formatter.format(dateParsed) : formatter.format(new Date())}.pdf`;
+
+const handleEndGame = (e) => {
+  // alert pour confirmer la fin de la partie
+  if (window.confirm('Etes vous sur de vouloir terminer la partie ?')) {
+    cleanState();
+    dateIsActive();
+  } 
+}
+
   // Document to download : 
 const MyDoc = () => {
   return (
   <Document>
     <Page size="A4" orientation="landscape" style={styles.page}>
       <View style={styles.table}>
+      <Text style={styles.title}>Résultats du {date ? formatter.format(dateParsed) : formatter.format(new Date())}</Text>
         <View style={styles.tableRow}> 
           <View style={styles.tableCol}> 
             <Text style={styles.tableCell}>Classement</Text> 
@@ -188,18 +196,6 @@ const MyDoc = () => {
   return (
     <div className="results">
 
-    <div>
-      <button
-        type="button"
-        className="results-button"
-        onClick={handleSave}
-      >
-      Sauvegarder  
-      </button>
-    </div>
-    { showSaveMessage ? <div className="
-    results-save-message">{savedMessage} <button onClick={handleShowSaveMessage} className="results-save-message-button"> ok </button></div> : null }
-
       <table className="results-table">
         <thead className="results-table-head">
           <tr className="results-table-head-row">
@@ -265,13 +261,13 @@ const MyDoc = () => {
         </tbody>
       </table>
 
-        <button className="results-button-dl" >
-      <PDFDownloadLink document={<MyDoc />} fileName={fileName} className="results-button-dl-link">
-      {({ blob, url, loading, error }) => 
-        loading ? 'Loading document...' : 'Télécharger'
-      }
-    </PDFDownloadLink>
-    </button>
+      <button className="results-button-dl" onClick={handleEndGame}>
+        <PDFDownloadLink document={<MyDoc />} fileName={fileName} className="results-button-dl-link" >
+          {({ blob, url, loading, error }) => 
+            loading ? 'Loading document...' : 'Fin de la partie'
+          }
+        </PDFDownloadLink>
+      </button>
     
     </div>
   );

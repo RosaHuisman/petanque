@@ -2,6 +2,8 @@
 
 .navigation {
     background-color: vars.$lightColor;
+    display: flex;
+    justify-content: space-between;
 
    &-link {
         text-decoration: none;

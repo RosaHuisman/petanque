@@ -113,7 +113,7 @@ const Round = ({
               })} 
             </div>
           </td>
-          <td><i class="bi bi-arrow-left-right"></i></td>
+          <td><i className="bi bi-arrow-left-right"></i></td>
           <td>
             <div>
               {corridor.team2.players.map((player) => {

@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import './style.scss';
 
 
-const NewGame = ({
+const Players = ({
   changeField,
   player,
   playerId,
@@ -51,19 +51,19 @@ const NewGame = ({
 
 
   return (
-    <div className="newgame">
+    <div className="players">
           { round1.length === 0 && round2.length === 0 && round3.length === 0 ? (
-              <form autoComplete="off" className="newgame-form" onSubmit={handleSubmit}>
+              <form autoComplete="off" className="players-form" onSubmit={handleSubmit}>
                 <Field
                   name="player"
                   placeholder="Nom joueur"
                   onChange={changeField}
                   value={player}
-                  className="newgame-form-input"
+                  className="players-form-input"
                 />          
                 <button
                   type="submit"
-                  className="newgame-form-button"
+                  className="players-form-button"
                   >
                   +
                   </button>
@@ -73,12 +73,12 @@ const NewGame = ({
           
 
         { players.length > 0 ?
-        <div className="newgame-list">
-        <p className="newgame-list-total"> Nombre total de joueurs : <b>{players.length}</b></p>
+        <div className="players-list">
+        <p className="players-list-total"> Nombre total de joueurs : <b>{players.length}</b></p>
         
         <div>
           {players.map((player)=>(
-              <div key={player.id} className="newgame-list-player"> <span className="newgame-list-player-name"> {player.name} </span>
+              <div key={player.id} className="players-list-player"> <span className="players-list-player-name"> {player.name} </span>
                 
                 {(Number(playerId) === Number(player.id) && showDeletePlayerForm) ? (
                   <form 
@@ -91,14 +91,14 @@ const NewGame = ({
         
                 <button
                   type="button"
-                  className="newgame-list-player-edit-button"
+                  className="players-list-player-edit-button"
                   onClick={() => handleDelete(player.id)}
                 >
                   Oui
                 </button>
                   <button
                     type="button"
-                    className="newgame-list-player-edit-button"
+                    className="players-list-player-edit-button"
                     onClick={handleDelete}
                   >
                     Non
@@ -107,7 +107,7 @@ const NewGame = ({
                 ) : (
                   <button
                   type="button"
-                  className="newgame-list-player-button bi bi-trash3"
+                  className="players-list-player-button bi bi-trash3"
                   {...player}
                   onClick={handleDeleteForm}
                 >
@@ -117,7 +117,7 @@ const NewGame = ({
                   {(Number(playerId) === Number(player.id) && showEditPlayerForm) ? (
                   <form 
                     autoComplete="off" 
-                    className="newgame-list-player-edit" 
+                    className="players-list-player-edit" 
                     onSubmit={handleEditPlayer}
                     {...player}
                   >
@@ -126,18 +126,18 @@ const NewGame = ({
                     placeholder="Nouveau nom joueur"
                     onChange={changeField}
                     value={player}
-                    className="newgame-list-player-edit-input"
+                    className="players-list-player-edit-input"
                   />
         
                   <button
                     type="submit"
-                    className="newgame-list-player-edit-button"
+                    className="players-list-player-edit-button"
                   >
                     OK
                   </button>
                   <button
                     type="button"
-                    className="newgame-list-player-edit-button"
+                    className="players-list-player-edit-button"
                     onClick={handleEdit}
                   >
                     Annuler
@@ -146,7 +146,7 @@ const NewGame = ({
                 ) : (
                   <button
                   type="button"
-                  className="newgame-list-player-button bi bi-pencil-fill"
+                  className="players-list-player-button bi bi-pencil-fill"
                   {...player}
                   onClick={handleEdit}
                 >
@@ -158,12 +158,11 @@ const NewGame = ({
         </div>
         </div>
         :
-        <p> Entre le nom des joueurs</p>
-        }
+        null }
     </div>
 
   );
 
 };
 
-export default NewGame;
+export default Players;

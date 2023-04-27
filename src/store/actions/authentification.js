@@ -1,7 +1,6 @@
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SAVE_USER = 'SAVE_USER';
-export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const CHANGE_VALUE_LOGIN = 'CHANGE_VALUE_LOGIN';
 
 
@@ -25,7 +24,4 @@ export const saveUser = (payload) => ({
   payload,
 });
 
-export const checkToken = () => ({
-    type: CHECK_TOKEN,
-  });
   

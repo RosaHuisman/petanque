@@ -11,7 +11,6 @@ const LoginForm = ({
   handleLogin,
   handleLogout,
   isLogged,
-  loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -28,8 +27,9 @@ const LoginForm = ({
           <form autoComplete="off" onSubmit={handleSubmit}>
             
             <Field
-              name="firstName"
-              placeholder="Prénom"
+              name="email"
+              placeholder="Adresse email"
+              required
               onChange={changeField}
               className="login-form-input"
             />
@@ -38,6 +38,7 @@ const LoginForm = ({
               name="password"
               type="password"
               placeholder="Mot de passe"
+              required
               onChange={changeField}
               className="login-form-input"
             />
@@ -57,9 +58,6 @@ const LoginForm = ({
       <MediaQuery minWidth={0} maxWidth={480}>
         {isLogged && (
         <div className="logged">
-            <p className="logged-message">
-              {loggedMessage}
-            </p>
             <button
               type="button"
               className="logged-button"
@@ -75,9 +73,10 @@ const LoginForm = ({
         <div className="login-form-mobile">
           <form autoComplete="off" onSubmit={handleSubmit}>
             
-            <Field
-              name="firstName"
-              placeholder="Prénom"
+          <Field
+              name="email"
+              placeholder="Adresse email"
+              required
               onChange={changeField}
               className="login-form-input"
             />
@@ -86,6 +85,7 @@ const LoginForm = ({
               name="password"
               type="password"
               placeholder="Mot de passe"
+              required
               onChange={changeField}
               className="login-form-input"
             />
@@ -109,12 +109,10 @@ LoginForm.propTypes = {
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
   isLogged: false,
-  loggedMessage: 'Connecté',
 };
 
 export default LoginForm;

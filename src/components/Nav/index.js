@@ -10,8 +10,9 @@ const Nav = ({
     gameIsActive,
     resultIsActive,
     playersIsActive,
+    dateIsActive,
     cleanState,
-    newGameIsActive
+    handleLogout
     
 }) => {
 
@@ -25,47 +26,78 @@ const Nav = ({
   }
 
   const handleEndGame = (e) => {
-    cleanState();
-    newGameIsActive();
+    // alert pour confirmer la fin de la partie
+    if (window.confirm('Etes vous sur de vouloir terminer la partie ?')) {
+      cleanState();
+      dateIsActive();
+    } 
   }
   
   return (
     <>
     { isLogged ? (
         <div className="navigation">
-            <button 
-              className={playersIsActive ? "navigation-link active" : "navigation-link"}  
-              name="players" 
-              onClick={handleIsActive}
-              >
-                Joueurs
-            </button>
-            {players.length >= 4 ? (
-              <button 
-              className={gameIsActive ? "navigation-link active" : "navigation-link"}  
-              name="game" 
-              onClick={handleIsActive}
-              >
-                Matchs
-            </button>
-            ) : null}
-            
-            
-            <button 
-            className={resultIsActive ? "navigation-link active" : "navigation-link"}
-            name="result"
-            onClick={handleResults}
-            >
-            Resultats 
-          </button>
+            <div className='navigation__left'>
+                <button 
+                  className={dateIsActive ? "navigation-link active" : "navigation-link"}  
+                  name="date" 
+                  onClick={handleIsActive}
+                  >
+                    Date
+                </button>
+              
+              {!dateIsActive || gameIsActive || playersIsActive || resultIsActive || players.length > 0 ? (
+                <button 
+                  className={playersIsActive ? "navigation-link active" : "navigation-link"}  
+                  name="players" 
+                  onClick={handleIsActive}
+                  >
+                    Joueurs
+                </button>
+              ) : null
+              }
 
-          <button 
-            className="navigation-link"
-            name="endGame"
-            onClick={handleEndGame}
+              {players.length >= 4 ? (
+                <button 
+                className={gameIsActive ? "navigation-link active" : "navigation-link"}  
+                name="game" 
+                onClick={handleIsActive}
+                >
+                  Matchs
+              </button>
+              ) : null}
+              
+              {gameIsActive || resultIsActive ? ( 
+              <>
+                <button 
+                  className={resultIsActive ? "navigation-link active" : "navigation-link"}
+                  name="result"
+                  onClick={handleResults}
+                >
+                  Resultats 
+                </button>
+            
+
+                <button 
+                  className="navigation-link"
+                  name="endGame"
+                  onClick={handleEndGame}
+                >
+                  Fin de la partie 
+                </button>
+              </>
+              ) : null
+            }
+           </div>
+           <div className='navigation__right'>
+            <button
+              type="button"
+              className="navigation-link"
+              onClick={handleLogout}
             >
-            Fin de la partie 
-          </button>
+              Déconnexion
+            </button>
+          </div>
             
         </div>
 

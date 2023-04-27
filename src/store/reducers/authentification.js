@@ -7,7 +7,6 @@ import {
   export const initialState = {
     email: '',
     password: '',
-    firstName: '',
     id: null,
     logged: false,
   };
@@ -22,14 +21,14 @@ import {
         };
   
       case SAVE_USER: {
-        const { email, firstName, logged, id } = action.payload;
+        console.log('payload dans reducer', action.payload);
+        const { email, uid } = action.payload.user;
         return {
           ...state,
-          firstName,
-          logged,
           email,
-          id,
+          uid,
           password: '',
+          logged: true,
         };
       }
       case LOGOUT: {

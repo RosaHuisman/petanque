@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Results from '../../components/Results';
-import { saveGameInDB, hideSaveMessage } from '../../store/actions/game';
+import { saveGameInDB, hideSaveMessage, cleanState } from '../../store/actions/game';
+import { isActive, dateIsActive } from '../../store/actions/home';
+
 
 const mapStateToProps = (state, ownProps) => ({
  players: state.game.players,
@@ -10,6 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
  winNoRound: state.game.winNoRound,
  showSaveMessage: state.game.showSaveMessage,
  savedMessage: state.game.savedMessage,
+ date: state.game.date,
+ dateIsActive: state.home.dateIsActive,
 
 });
 
@@ -23,6 +27,17 @@ hideSaveMessage: () => {
     dispatch(hideSaveMessage());
 },
 
+cleanState: () => {
+    dispatch(cleanState());
+  },
+
+isActive: (name) => {
+dispatch(isActive(name));
+},
+
+dateIsActive: () => {
+dispatch(dateIsActive());
+}
 
 });
 

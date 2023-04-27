@@ -1,14 +1,14 @@
 import {
     IS_ACTIVE,
-  } from '../actions/history';
+  } from '../actions/home';
   
 
   export const initialState = {
     homeIsActive: false,
     gameIsActive: false,
-    historyIsActive: false,
     resultIsActive: false,
     playersIsActive: false,
+    dateIsActive: false,
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -18,7 +18,6 @@ import {
     case IS_ACTIVE:
       return {
         ...initialState,
-        //[action.name+'IsActive']: !state[action.name+'IsActive'],
         [action.name+'IsActive']: true,
       }
       

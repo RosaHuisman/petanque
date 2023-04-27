@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import NewGame from '../../components/Players';
+import Players from '../../components/Players';
 import { deletePlayer, editForm, editPlayer, deleteForm, setPlayersInGame, addPlayer  } from '../../store/actions/game';
  
 const mapStateToProps = (state) => ({
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewGame);
+export default connect(mapStateToProps, mapDispatchToProps)(Players);

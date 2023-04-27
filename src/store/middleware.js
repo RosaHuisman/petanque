@@ -1,6 +1,6 @@
-import { LOGIN, saveUser, CHECK_TOKEN } from './actions/authentification';
-import { SAVE_GAME_IN_DB, saveMessage } from './actions/game';
-import { GET_GAMES, saveAllGames } from './actions/history';
+import { LOGIN, saveUser } from './actions/authentification';
+import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { auth } from './../firebase';
 
 import api from './utils/api';
 
@@ -8,88 +8,22 @@ const middleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const state = store.getState();
-      api({
-        method: 'POST',
-        url: '/login',
-        data: {
-          firstName: state.auth.firstName,
-          password: state.auth.password,
-        },
-      })
+      signInWithEmailAndPassword(auth, state.auth.email, state.auth.password)
         .then((response) => {
-          localStorage.setItem('token', response.data.token);
-          api.defaults.headers.common.authorization = `Bearer ${response.data.token}`;
-          const actionSaveUser = saveUser(response.data);
+          // Signed in
+          console.log(response);
+          localStorage.setItem('token', response.user.accessToken);
+          api.defaults.headers.common.authorization = `Bearer ${response.user.accessToken}`;
+          const actionSaveUser = saveUser(response);
           store.dispatch(actionSaveUser);
         })
         .catch((error) => {
-            console.log(error)
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
           });
       break;
     }
-    case CHECK_TOKEN: {
-      const token = localStorage.getItem('token');
-
-      if (token) {
-        api.get('/checkToken', {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-          .then((response) => {
-            api.defaults.headers.common.authorization = `Bearer ${token}`;
-            const payload = { ...response.data };
-            const actionSaveUser = saveUser(payload);
-            store.dispatch(actionSaveUser);
-          })
-          .catch((error) => console.log(error));
-      }
-      break;
-    }
-    case SAVE_GAME_IN_DB: {
-      const state = store.getState();
-      // for each player of players, remove the id
-      let players = state.game.players.map((player) => {
-        const { id, ...rest } = player;
-        return rest;
-      });
-         api({
-          method: 'POST',
-          url:'/game', 
-          data: {
-            game: {
-              date: state.game.date,
-              organisator_id: state.auth.id,
-            },
-            players: players,
-            
-          }
-        })
-          .then((response) => {
-            store.dispatch(saveMessage(response.data.message));
-          })
-          .catch((error) => console.log(error)); 
-      
-      break;
-    }
-
-    case GET_GAMES: {
-      const state = store.getState();
-      api({
-        method: 'GET',
-        url:'/game',
-        headers: {
-          authorization: `Bearer ${state.auth.token}`,
-        }
-      })
-        .then((response) => {
-          const payload = [ ...response.data ];
-          store.dispatch(saveAllGames(payload));
-        })
-        .catch((error) => console.log(error));
-      break;
-    }
-
      
 
     default:

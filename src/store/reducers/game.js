@@ -22,7 +22,7 @@ import {
     EDIT_PLAYER,
     DELETE_FORM,
     DELETE_PLAYER,
-    LOGOUT,
+    //LOGOUT,
     SHOW_MESSAGE,
     SHOW_MAKE_ROUND_MESSAGE,
     SET_SCORE_MAX,
@@ -259,11 +259,11 @@ import {
         }
       }
       
-      case LOGOUT: {
+      /* case LOGOUT: {
         return {
           ...initialState
         }
-      }
+      } */
 
       // eslint-disable-next-line
       case SHOW_MESSAGE: {

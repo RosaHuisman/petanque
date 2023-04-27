@@ -5,7 +5,6 @@ import { logout as logoutAction } from '../../store/actions/authentification';
 
 const mapStateToProps = (state) => ({
   isLogged: state.auth.logged,
-  loggedMessage: `Bonjour ${state.auth.firstName}`,
 });
 
 const mapDispatchToProps = (dispatch) => ({
