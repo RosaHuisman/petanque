@@ -11,47 +11,11 @@
         margin: 0 1em 0 0;
     }
 
-    &-links {
-        margin-top: 10vh;
-
-        &-button {
-            display: block;
-            font-size: 1.2em;
-            color: black;
-            background-color: vars.$secondaryColor;
-            border-radius: .3em;
-            padding: 1.5em;
-            width: 40vw;
-            margin: auto;
-            margin-top: 2vh;
-            text-align: center;
-            text-decoration: none;
-        }
-        &-button:hover {
-            background-color: vars.$primaryColor;
-            color: white;
-        }
-    }
 
     &-mobile {
         width: 95vw;
         margin: 0 auto;
 
-        &-links {
-            margin-top: 10vh;
-    
-            &-button {
-                display: block;
-                font-size: 1.2em;
-                color: black;
-                background-color: vars.$secondaryColor;
-                border-radius: .3em;
-                padding: 1.5em;
-                margin-top: 2vh;
-                text-align: center;
-                text-decoration: none;
-            }
-        }
     }
    
 }

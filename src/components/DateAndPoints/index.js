@@ -36,7 +36,6 @@ const DateAndPoints = ({
   return (
     <div className="dateAndPoints">
 
-
       <div className="dateAndPoints-scoreMax">
         <label htmlFor="scoreMax" className="dateAndPoints-scoreMax-label">Jusqu'à combien de points va la partie:</label>
         <select name="scoreMax" id="scoreMax" onChange={handleChangeScoreMax} className="dateAndPoints-scoreMax-select">
