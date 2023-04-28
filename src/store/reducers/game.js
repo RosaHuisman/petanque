@@ -214,10 +214,10 @@ import {
             {
               id: (Math.max(...ids) +1),
               name: state.player,
-              winRounds: [],
-              pointsRound1: 0,
-              pointsRound2: 0,
-              pointsRound3: 0,
+              winrounds: [],
+              pointsround1: 0,
+              pointsround2: 0,
+              pointsround3: 0,
             },
             ...state.players,
           ],
@@ -253,7 +253,7 @@ import {
       case EDIT_PLAYER: {
         return {
           ...state,
-          players: state.players.map(player => Number(player.id) === Number(action.playerId) ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score), winRounds: [], pointsRound1: 0, pointsRound2: 0, pointsRound3: 0} : player),
+          players: state.players.map(player => Number(player.id) === Number(action.playerId) ? player = {id: Number(player.id), name: state.editPlayer, score: Number(player.score), winrounds: [], pointsround1: 0, pointsround2: 0, pointsround3: 0} : player),
           editPlayer: '',
           showEditPlayerForm: !state.showEditPlayerForm,
         }

@@ -59,10 +59,11 @@ const formatter = new Intl.DateTimeFormat('fr-FR', {
 let fileName = `Résultats du ${date ? formatter.format(dateParsed) : formatter.format(new Date())}.pdf`;
 
 const handleEndGame = (e) => {
-  // alert pour confirmer la fin de la partie
-  if (window.confirm('Etes vous sur de vouloir terminer la partie ?')) {
-    cleanState();
-    dateIsActive();
+  if (window.confirm('Etes vous sur de vouloir terminer la partie ? Cela va effacer les données du jeu et téléchargera un fichier PDF avec les résultats.')) {
+    setTimeout(() => {
+      cleanState();
+      dateIsActive();
+    }, 2000);
   } 
 }
 
@@ -102,13 +103,13 @@ const MyDoc = () => {
                 <Text style={styles.tableCell}> {player.name} </Text>  
               </View> 
               <View style={styles.tableCol}>  
-                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
                 <Text style={styles.tableCell}> {player.totalPoints} </Text>  
@@ -125,13 +126,13 @@ const MyDoc = () => {
                 <Text style={styles.tableCell}> {player.name} </Text>  
               </View> 
               <View style={styles.tableCol}>  
-                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
                 <Text style={styles.tableCell}> {player.totalPoints} </Text>  
@@ -149,13 +150,13 @@ const MyDoc = () => {
                 <Text style={styles.tableCell}> {player.name} </Text>  
               </View> 
               <View style={styles.tableCol}>  
-                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
                 <Text style={styles.tableCell}> {player.totalPoints} </Text>  
@@ -173,13 +174,13 @@ const MyDoc = () => {
                 <Text style={styles.tableCell}> {player.name} </Text>  
               </View> 
               <View style={styles.tableCol}>  
-                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound1} - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
-                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </Text>  
+                <Text style={styles.tableCell}> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </Text>  
               </View> 
               <View style={styles.tableCol}> 
                 <Text style={styles.tableCell}> {player.totalPoints} </Text>  
@@ -212,9 +213,9 @@ const MyDoc = () => {
           <tr className="results-table-body-player" key={player.id}>
             <td> {winAllRounds.indexOf(player) + 1} </td>
             <td> {player.name} </td>
-            <td> {player.scoreRound1} - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
-            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
-            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </td>
+            <td> {player.scoreRound1} - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </td>
+            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </td>
+            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </td>
             <td> {player.totalPoints} </td>
           </tr>
         
@@ -225,9 +226,9 @@ const MyDoc = () => {
           <tr className="results-table-body-player" key={player.id}>
             <td> {winTwoRounds.indexOf(player) + 1 + winAllRounds.length} </td>
             <td> {player.name} </td>
-            <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
-            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
-            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </td>
+            <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </td>
+            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </td>
+            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </td>
             <td> {player.totalPoints} </td>
           </tr>
         
@@ -238,9 +239,9 @@ const MyDoc = () => {
           <tr className="results-table-body-player" key={player.id}>
             <td> {winOneRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length} </td>
             <td> {player.name} </td>
-            <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
-            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
-            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </td>
+            <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </td>
+            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </td>
+            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </td>
             <td> {player.totalPoints} </td>
           </tr>
         
@@ -251,9 +252,9 @@ const MyDoc = () => {
           <tr className="results-table-body-player" key={player.id}>
             <td> {winNoRound.indexOf(player) + 1 + winAllRounds.length + winTwoRounds.length + winOneRound.length} </td>
             <td> {player.name} </td>
-            <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsRound1} <small> ({player.pointsRound1}) </small> </td>
-            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsRound2} <small> ({player.pointsRound2}) </small> </td>
-            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsRound3} <small> ({player.pointsRound3}) </small> </td>
+            <td> {player.scoreRound1}  - {player.scoreRound1 - player.pointsround1} <small> ({player.pointsround1}) </small> </td>
+            <td> {player.scoreRound2} - {player.scoreRound2 - player.pointsround2} <small> ({player.pointsround2}) </small> </td>
+            <td> {player.scoreRound3} - {player.scoreRound3 - player.pointsround3} <small> ({player.pointsround3}) </small> </td>
             <td> {player.totalPoints} </td>
           </tr>
         
@@ -271,7 +272,6 @@ const MyDoc = () => {
     
     </div>
   );
-
 };
 
 export default Results;

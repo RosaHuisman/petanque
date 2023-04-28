@@ -3,8 +3,8 @@ export const winAllRounds = (players) => {
     let winAllRounds = [];
     
     players.forEach((player) => {
-        player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);
+        player.totalPoints = player.pointsround1 + player.pointsround2 + player.pointsround3;
+        let totalWinRounds = Number(player.winrounds[2]) + Number(player.winrounds[6]) + Number(player.winrounds[10]);
         if (Number(totalWinRounds) === 6) {
             winAllRounds = [...winAllRounds, player]
         } 
@@ -20,8 +20,8 @@ export const winTwoRounds = (players) => {
     let winTwoRounds = [];
     
     players.forEach((player) => {
-        player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);         
+        player.totalPoints = player.pointsround1 + player.pointsround2 + player.pointsround3;
+        let totalWinRounds = Number(player.winrounds[2]) + Number(player.winrounds[6]) + Number(player.winrounds[10]);         
         if ( Number(totalWinRounds) === 4 ) {
             winTwoRounds = [...winTwoRounds, player]
         } 
@@ -37,8 +37,8 @@ export const winOneRound = (players) => {
     let winOneRound = [];
     
     players.forEach((player) => {
-        player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-        let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);        
+        player.totalPoints = player.pointsround1 + player.pointsround2 + player.pointsround3;
+        let totalWinRounds = Number(player.winrounds[2]) + Number(player.winrounds[6]) + Number(player.winrounds[10]);        
         if (Number(totalWinRounds) === 2) {
             winOneRound = [...winOneRound, player]
         } 
@@ -54,8 +54,8 @@ export const winOneRound = (players) => {
         let winNoRound = [];
         
         players.forEach((player) => {
-            player.totalPoints = player.pointsRound1 + player.pointsRound2 + player.pointsRound3;
-            let totalWinRounds = Number(player.winRounds[2]) + Number(player.winRounds[6]) + Number(player.winRounds[10]);            
+            player.totalPoints = player.pointsround1 + player.pointsround2 + player.pointsround3;
+            let totalWinRounds = Number(player.winrounds[2]) + Number(player.winrounds[6]) + Number(player.winrounds[10]);            
             if (Number(totalWinRounds) === 0) {
                 winNoRound = [...winNoRound, player]
             }

@@ -11,7 +11,6 @@ const Nav = ({
     resultIsActive,
     playersIsActive,
     dateIsActive,
-    cleanState,
     handleLogout
     
 }) => {
@@ -23,14 +22,6 @@ const Nav = ({
 
    const handleIsActive = (e) => {
      isActive(e.target.name)
-  }
-
-  const handleEndGame = (e) => {
-    // alert pour confirmer la fin de la partie
-    if (window.confirm('Etes vous sur de vouloir terminer la partie ?')) {
-      cleanState();
-      dateIsActive();
-    } 
   }
   
   return (
@@ -68,7 +59,6 @@ const Nav = ({
               ) : null}
               
               {gameIsActive || resultIsActive ? ( 
-              <>
                 <button 
                   className={resultIsActive ? "navigation-link active" : "navigation-link"}
                   name="result"
@@ -76,16 +66,6 @@ const Nav = ({
                 >
                   Resultats 
                 </button>
-            
-
-                <button 
-                  className="navigation-link"
-                  name="endGame"
-                  onClick={handleEndGame}
-                >
-                  Fin de la partie 
-                </button>
-              </>
               ) : null
             }
            </div>
